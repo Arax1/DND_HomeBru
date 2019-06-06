@@ -1,26 +1,26 @@
 from django.db import models
 
 
-class Trait(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+# class Trait(models.Model):
+#     name = models.CharField(max_length=100)
+#     description = models.TextField()
 
-class RaceTrait(Trait):
+# class RaceTrait(Trait):
+#
+#
+#
+# class FEAT(Trait):
+#
+#
+# class Feature(Trait):
+#
+#
+# class ASI(Feature):
+#
 
 
 
-class FEAT(Trait):
-
-
-class Feature(Trait):
-
-
-class ASI(Feature):
-
-
-
-
-class Character(Models.model):
+class Character(models.Model):
     strength = models.IntegerField()
     intelligence = models.IntegerField()
     Wisdom = models.IntegerField()
@@ -28,7 +28,7 @@ class Character(Models.model):
     Constitution = models.IntegerField()
     Dextirity = models.IntegerField()
     # foreign key to race
-    # make a form for character 
+    # make a form for character
 
 class Race(models.Model):
     name = models.CharField(max_length=100)
