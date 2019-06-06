@@ -14,13 +14,13 @@ class Race(models.Model):
 
 
 class Class(models.Model):
-    class_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     hit_dice = models.IntegerField()
     # proficiencies, features, subclasses
 
 
 class Background(models.Model):
-    background_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     # proficiencies, languages, equipment
