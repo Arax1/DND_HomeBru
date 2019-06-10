@@ -23,10 +23,10 @@ from django.db import models
 class Character(models.Model):
     strength = models.IntegerField()
     intelligence = models.IntegerField()
-    Wisdom = models.IntegerField()
-    Charisma = models.IntegerField()
-    Constitution = models.IntegerField()
-    Dextirity = models.IntegerField()
+    wisdom = models.IntegerField()
+    charisma = models.IntegerField()
+    constitution = models.IntegerField()
+    dextirity = models.IntegerField()
     # foreign key to race
     # make a form for character
 
@@ -34,9 +34,9 @@ class Race(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     age = models.IntegerField()
-    Alighment = models.CharField(max_length=100)
-    Size = models.IntegerField()
-    Speed = models.IntegerField()
+    alignment = models.CharField(max_length=100)
+    size = models.IntegerField()
+    speed = models.IntegerField()
     # make a form for race, make this as simple as possible
     # traits = foreigh_key(RaceTrait), on_delete==CASCADE
     # abilities, features, languages, subraces,etc
