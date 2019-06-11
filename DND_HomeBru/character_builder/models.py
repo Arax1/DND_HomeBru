@@ -1,6 +1,17 @@
 from django.db import models
 
-# Create your models here.
+
+class Trait(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+
+class RaceTrait(Trait):
+    pass
+
+
+class Classtrait(Trait):
+    pass
 
 
 class Race(models.Model):
@@ -10,17 +21,18 @@ class Race(models.Model):
     Alighment = models.CharField(max_length=100)
     Size = models.IntegerField()
     Speed = models.IntegerField()
+    # traits = foreigh_key(RaceTrait), on_delete==CASCADE
     # abilities, features, languages, subraces,etc
 
 
 class Class(models.Model):
-    class_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     hit_dice = models.IntegerField()
     # proficiencies, features, subclasses
 
 
 class Background(models.Model):
-    background_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     # proficiencies, languages, equipment

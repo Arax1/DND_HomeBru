@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{% for background in object_list %}
+<div class="post_entry">
+    <h2>
+        {{ background.name }}
+    </h2>
+</div>
+{% endfor %}
+{% endblock %}
