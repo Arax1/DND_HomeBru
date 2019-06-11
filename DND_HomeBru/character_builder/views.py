@@ -33,5 +33,5 @@ class BackgroundListView(ListView):
 class CharacterCreateView(CreateView):
     model  = Character
     template_name = "character_create_form.html"
-    fields = ['strength', 'intelligence', 'wisdom', 'constitution', 'dextirity', 'charisma' ]
+    fields = ['strength', 'intelligence', 'wisdom', 'constitution', 'dextirity', 'charisma', 'race_key' ]
     success_url = reverse_lazy("home")
