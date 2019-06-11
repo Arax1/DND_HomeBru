@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Race)
 admin.site.register(Class)
 admin.site.register(Background)
+admin.site.register(Character)
