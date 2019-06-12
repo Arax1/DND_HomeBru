@@ -1,16 +1,43 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 
 <h1 class="homebru">HOMEBRU</h1>
 
-<h2>
-    <a href="{% url 'race_view' %}">List of Races</a>
-</h2>
-<h2>
-    <a href="{% url 'class_view' %}">List of Classes</a>
-</h2>
-<h2>
-    <a href="{% url 'background_view' %}">List of Backgrouds</a>
-</h2>
+<section class="tiles">
+    <article class="style1">
+        <span class="image">
+            <img src="{% static 'images/Llanowar-Tribe.jpg' %}" alt="" />
+        </span>
+        <a href="{% url 'race_view' %}">
+            <h2>Race</h2>
+            <div class="content">
+                <p>Create your own race and view customized races here!</p>
+            </div>
+        </a>
+    </article>
+    <article class="style2">
+        <span class="image">
+            <img src="{% static 'images/classes.jpg' %}" alt="" />
+        </span>
+        <a href="{% url 'class_view' %}">
+            <h2>Classes</h2>
+            <div class="content">
+                <p>Create your own class and view customized classes here!</p>
+            </div>
+        </a>
+    </article>
+    <article class="style3">
+        <span class="image">
+            <img src="{% static 'images/stoneforge_mystic.jpg' %}" alt="" />
+        </span>
+        <a href="{% url 'background_view' %}">
+            <h2>Backgrounds</h2>
+            <div class="content">
+                <p>Create your own backgrounds and view customized backgrounds here!</p>
+            </div>
+        </a>
+    </article>
+</section>
 >>>>>>> front-end
 {% endblock %}

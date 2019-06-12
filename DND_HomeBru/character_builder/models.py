@@ -37,6 +37,14 @@ class Race(models.Model):
     alignment = models.CharField(max_length=100)
     size = models.IntegerField()
     speed = models.IntegerField()
+
+    # strength_mod = models.IntegerField()
+    # dex_mod = models.IntegerField()
+    # con_mod = models.IntegerField()
+    # int_mod = models.IntegerField()
+    # wis_mod = models.IntegerField()
+    # cha_mod = models.IntegerField()
+
     # make a form for race, make this as simple as possible
     # traits = foreigh_key(RaceTrait), on_delete==CASCADE
     # abilities, features, languages, subraces,etc
