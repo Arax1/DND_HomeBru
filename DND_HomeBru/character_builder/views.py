@@ -15,23 +15,31 @@ def homepage(request):
 class RaceListView(ListView):
     model = Race
     template_name = "race_list.html"
+    context_object_name = "races"
+
 
 class RaceCreateView(CreateView):
-    model  = Race
+    model = Race
     template_name = "race_create_form.html"
     success_url = reverse_lazy("home")
-    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed',]
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
+
 
 class ClassListView(ListView):
-    model  = Class
+    model = Class
     template_name = "class_list.html"
+    context_object_name = "classes"
+
 
 class BackgroundListView(ListView):
-    model  = Background
+    model = Background
     template_name = "background_list.html"
+    context_object_name = "backgrounds"
+
 
 class CharacterCreateView(CreateView):
-    model  = Character
+    model = Character
     template_name = "character_create_form.html"
-    fields = ['strength', 'intelligence', 'wisdom', 'constitution', 'dextirity', 'charisma', 'race_key' ]
+    fields = ['strength', 'intelligence', 'wisdom',
+              'constitution', 'dextirity', 'charisma', 'race_key']
     success_url = reverse_lazy("home")
