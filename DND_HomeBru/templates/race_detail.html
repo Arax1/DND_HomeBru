@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="post_entry">
+    <h2>Name:{{ race_details.name }}</h2>
+    <h2>Desscription:{{ race_details.description }}</h2>
+    <h2>Age:{{ race_details.age }}</h2>
+    <h2>Alignment:{{ race_details.alignment }}</h2>
+    <h2>Size:{{ race_details.size }}</h2>
+    <h2>Speed:{{ race_details.speed }}</h2>
+  </div>
+  {% endblock %}

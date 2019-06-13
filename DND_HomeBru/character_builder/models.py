@@ -54,6 +54,7 @@ class Race(models.Model):
 
 
 class Character(models.Model):
+    name = models.CharField(max_length=100,  default="")
     strength = models.IntegerField()
     intelligence = models.IntegerField()
     wisdom = models.IntegerField()

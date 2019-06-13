@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .models import *
@@ -24,6 +24,10 @@ class RaceCreateView(CreateView):
     success_url = reverse_lazy("home")
     fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
 
+class RaceDetailView(DetailView):
+    model = Race
+    context_object_name = "race_details"
+    template_name = 'race_detail.html'
 
 class ClassListView(ListView):
     model = Class
@@ -36,6 +40,11 @@ class ClassCreateView(CreateView):
     fields = ['name','description','hit_dice']
     success_url = reverse_lazy("home")
 
+class ClassDetailView(DetailView):
+    model = Class
+    context_object_name = "class_details"
+    template_name = 'class_detail.html'
+
 class BackgroundListView(ListView):
     model = Background
     template_name = "background_list.html"
@@ -47,10 +56,28 @@ class BackgroundCreateView(CreateView):
     fields = ['name', 'description']
     success_url = reverse_lazy("home")
 
+class BackgroundDetailView(DetailView):
+    model = Background
+    context_object_name = "background_details"
+    template_name = 'background_detail.html'
+
+
 
 class CharacterCreateView(CreateView):
     model = Character
     template_name = "character_create_form.html"
-    fields = ['strength', 'intelligence', 'wisdom',
+    fields = ['name','strength', 'intelligence', 'wisdom',
               'constitution', 'dextirity', 'charisma', 'race_key']
     success_url = reverse_lazy("home")
+
+
+class CharacterListView(ListView):
+    model = Character
+    template_name = "character_list.html"
+    context_object_name = 'characters'
+
+
+class CharacterDetailView(DetailView):
+    model = Character
+    template_name = 'character_detail.html'
+    context_object_name = "character_details"

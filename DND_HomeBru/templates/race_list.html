@@ -2,9 +2,7 @@
 {% block content %}
 {% for race in races %}
 <div class="post_entry">
-    <h2>
-        {{ race.name }}
-    </h2>
+    <h2><a href="{% url 'race_detail' race.pk %}">{{ race.name }}</a></h2>
 </div>
-{% endfor %}
+{% endfor  %}
 {% endblock content %}
