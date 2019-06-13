@@ -30,11 +30,22 @@ class ClassListView(ListView):
     template_name = "class_list.html"
     context_object_name = "classes"
 
+class ClassCreateView(CreateView):
+    model = Class
+    template_name = "class_create_form.html"
+    fields = ['name','description','hit_dice']
+    success_url = reverse_lazy("home")
 
 class BackgroundListView(ListView):
     model = Background
     template_name = "background_list.html"
     context_object_name = "backgrounds"
+
+class BackgroundCreateView(CreateView):
+    model = Background
+    template_name = "background_create_form.html"
+    fields = ['name', 'description']
+    success_url = reverse_lazy("home")
 
 
 class CharacterCreateView(CreateView):
