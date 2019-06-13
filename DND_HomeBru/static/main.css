@@ -29,6 +29,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+article.media.content-section {
+		border: solid;
+		padding: inherit;
+		margin: 15px;
+		width: 60%;
+		box-shadow: 3px 5px 7px 0px black;
+	}
+
 body {
 	line-height: 1;
 }
