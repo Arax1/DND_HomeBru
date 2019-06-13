@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 {% for race in races %}
-<div class="post_entry">
-    <h2><a href="{% url 'race_detail' race.pk %}">{{ race.name }}</a></h2>
-</div>
-{% endfor  %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <span class="mr-2">{{ race.age }}</span>
+            <small class="text-muted">{{ race.alignment }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'race_detail' race.pk %}">{{ race.name }}</a></h2>
+        <p class="article-content">{{ race.description }}</p>
+    </div>
+</article>
+{% endfor %}
 {% endblock content %}
