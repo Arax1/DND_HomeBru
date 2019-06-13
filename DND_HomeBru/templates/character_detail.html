@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="post_entry">
+    <h2>Name:{{ character_details.name }}</h2>
+    <h2>Strength:{{ character_details.strength }}</h2>
+    <h2>Intelligence:{{ character_details.intelligence }}</h2>
+    <h2>Wisdom:{{ character_details.wisdom }}</h2>
+    <h2>Charisma:{{ character_details.charisma }}</h2>
+    <h2>Constitution:{{ character_details.constitution }}</h2>
+    <h2>Dextirity:{{ character_details.dextirity }}</h2>
+    <h2>Race:{{ character_details.race_key }}</h2>
+  </div>
+  {% endblock %}
