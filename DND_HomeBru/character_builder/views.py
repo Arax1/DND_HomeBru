@@ -9,7 +9,7 @@ from .models import *
 
 
 def homepage(request):
-    return render(request, "home.html", {})
+    return render(request, "home.html", {'title': 'HomeBru - Home'})
 
 
 class RaceListView(ListView):
