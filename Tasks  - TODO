@@ -1,5 +1,5 @@
 1. Create two branches--html and features. Features for Lorenzo and html for Anand.
-2.Having a random generator for character names will be nice.
+2.Having a random generator for character names will be nice.-->This is down the road
 Focus on:
 A page where it lists all of the charcters and then; a detailed view for all of the other classes and characters
 
@@ -8,3 +8,10 @@ Race-->Name, age, alignment
 Class-->Detailed View
 Background-->Detailed View 
 Character-->Detailed View
+Done!
+-------------------------------------------------------------------------------------------------
+June 13, 2019
+Edit/delete and update classes, backgrounds, rcaes, etc
+-Anand will do the card-nice template for everything else
+Fix HTML for DetailView
+Once this is done, it is time for the Character Sheet!
