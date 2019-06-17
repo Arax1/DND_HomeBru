@@ -4,8 +4,9 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <h2 class="cardlabel"><a class="article-title" href="#">{{ race.name }}</a></h2>
-            <small class="text-mute">{{ race.alignment }}</small>
+            <h2 class="cardlabel"><a class="article-title" href="{% url 'race_detail' race.pk %}">{{ race.name }}</a>
+            </h2>
+            <small class="text-mute">Alignment: {{ race.alignment }}</small>
         </div>
         <p class="article-content">{{ race.description }}</p>
     </div>
