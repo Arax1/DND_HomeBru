@@ -5,6 +5,9 @@ class Trait(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class RaceTrait(Trait):
     pass
@@ -62,6 +65,8 @@ class Character(models.Model):
     constitution = models.IntegerField()
     dextirity = models.IntegerField()
     race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
 
 class Class(models.Model):
@@ -69,10 +74,16 @@ class Class(models.Model):
     description = models.TextField()
     hit_dice = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
     # proficiencies, features, subclasses
 
 
 class Background(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+
+    def __str__(self):
+        return self.name
     # proficiencies, languages, equipment
