@@ -45,15 +45,25 @@ article.media.content-section {
 		border-bottom: 1px solid #adadad
 	  }
 	
-	  
+	.article-metadata-lite {
+		padding-bottom: 1px;
+		margin-bottom: 4px;
+		border-bottom: 1px solid #dedcdc;
+	}
+	
 	  
 	.article-metadata a:hover {
 		color: #333;
 		text-decoration: none;
 	  }
 
-a.article-title {
+	a.article-title {
 		font-size: 140%;
+		letter-spacing: 0.10em;
+	}
+
+	span.article-title {
+		font-size: 200%;
 		letter-spacing: 0.10em;
 	}
 
@@ -264,6 +274,13 @@ input, select, textarea {
 
 	h3 {
 		font-size: 1em;
+	}
+	
+	h3.article-content {
+		letter-spacing: 0.05em;
+		font-size: larger;
+		font-weight: 600;
+		margin: 0 0 .5em 0;
 	}
 
 	h4 {
