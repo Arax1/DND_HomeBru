@@ -199,9 +199,20 @@ input, select, textarea {
 		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 	}
 
+	a#create {
+		float: right;
+		position: sticky;
+		top: 8em;
+		letter-spacing: 0.20em;
+	}
+
 		a:hover {
 			border-bottom-color: transparent;
 			color: #f2849e !important;
+		}
+
+		a#create:hover {
+			background-color: #234d75;
 		}
 
 	strong, b {

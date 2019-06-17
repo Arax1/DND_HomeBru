@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="{% url 'race_new' %}" class="button primary icon solid fa-plus">New Race</a>
 {% for race in races %}
 <article class="media content-section">
     <div class="media-body">

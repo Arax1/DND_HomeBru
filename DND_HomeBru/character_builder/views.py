@@ -26,7 +26,7 @@ class RaceListView(ListView):
 class RaceCreateView(CreateView):
     model = Race
     template_name = "race_create_form.html"
-    # success_url = reverse_lazy("home")
+    success_url = reverse_lazy("home")
     fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
 
 
