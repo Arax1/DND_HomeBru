@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 {% for background in backgrounds %}
-<div class="post_entry">
-    <h2><a href="{% url 'background_detail' background.pk %}">{{ background.name }}</a></h2>
-</div>
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2 class="cardlabel"><a class="article-title"
+                    href="{% url 'background_detail' background.pk %}">{{ background.name }}</a>
+            </h2>
+        </div>
+        <p class="article-content">{{ background.description }}</p>
+    </div>
+</article>
 {% endfor  %}
 {% endblock content %}
