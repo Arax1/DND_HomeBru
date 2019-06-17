@@ -2,7 +2,7 @@
 {% block content %}
 {% for character in characters %}
 <div class="post_entry">
-    <h2><a href="{% url 'character_detail' character.pk %}">{{ character.name }}</a></h2>
+    <h2><a href="{{ character.get_absolute_url }}">{{ character.name }}</a></h2>
 </div>
 {% endfor  %}
 {% endblock content %}

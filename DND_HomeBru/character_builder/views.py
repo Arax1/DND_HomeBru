@@ -1,15 +1,18 @@
-from django.shortcuts import render, HttpResponse
+# comment
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from .models import *
+from .models import Race, Class, Background, Character
 
 
 # Create your views here.
 
-
+# homepage view
 def homepage(request):
     return render(request, "home.html", {'title': 'HomeBru - Home'})
+
+# view listing all races
 
 
 class RaceListView(ListView):
@@ -17,38 +20,46 @@ class RaceListView(ListView):
     template_name = "race_list.html"
     context_object_name = "races"
 
+# view creating the races
+
 
 class RaceCreateView(CreateView):
     model = Race
     template_name = "race_create_form.html"
-    success_url = reverse_lazy("home")
+    # success_url = reverse_lazy("home")
     fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
+
 
 class RaceDetailView(DetailView):
     model = Race
     context_object_name = "race_details"
     template_name = 'race_detail.html'
 
+
 class ClassListView(ListView):
     model = Class
     template_name = "class_list.html"
     context_object_name = "classes"
 
+
 class ClassCreateView(CreateView):
     model = Class
     template_name = "class_create_form.html"
-    fields = ['name','description','hit_dice']
+    fields = ['name', 'description', 'hit_dice']
     success_url = reverse_lazy("home")
+
 
 class ClassDetailView(DetailView):
     model = Class
     context_object_name = "class_details"
     template_name = 'class_detail.html'
 
+
 class BackgroundListView(ListView):
     model = Background
     template_name = "background_list.html"
     context_object_name = "backgrounds"
+
 
 class BackgroundCreateView(CreateView):
     model = Background
@@ -56,17 +67,17 @@ class BackgroundCreateView(CreateView):
     fields = ['name', 'description']
     success_url = reverse_lazy("home")
 
+
 class BackgroundDetailView(DetailView):
     model = Background
     context_object_name = "background_details"
     template_name = 'background_detail.html'
 
 
-
 class CharacterCreateView(CreateView):
     model = Character
     template_name = "character_create_form.html"
-    fields = ['name','strength', 'intelligence', 'wisdom',
+    fields = ['name', 'strength', 'intelligence', 'wisdom',
               'constitution', 'dextirity', 'charisma', 'race_key']
     success_url = reverse_lazy("home")
 
