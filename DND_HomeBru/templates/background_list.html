@@ -5,7 +5,7 @@
     <div class="media-body">
         <div class="article-metadata">
             <h2 class="cardlabel"><a class="article-title"
-                    href="{% url 'background_detail' background.pk %}">{{ background.name }}</a>
+                    href="{{ background.get_absolute_url }}">{{ background.name }}</a>
             </h2>
         </div>
         <p class="article-content">{{ background.description }}</p>

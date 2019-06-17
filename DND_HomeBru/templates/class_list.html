@@ -4,7 +4,7 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <h2 class="cardlabel"><a class="article-title" href="{% url 'class_detail' class.pk %}">{{ class.name }}</a>
+            <h2 class="cardlabel"><a class="article-title" href="{{ class.get_absolute_url }}">{{ class.name }}</a>
             </h2>
             <small class="text-mute">Hit Dice: 1d{{ class.hit_dice }}</small>
         </div>

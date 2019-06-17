@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Trait(models.Model):
     name = models.CharField(max_length=100)
@@ -7,6 +7,9 @@ class Trait(models.Model):
 
     def __str__(self):
         return self.name
+
+    # def get_absolute_url(self):
+    #     return reverse('trait_detail', args=[str(self.id)])
 
 
 class RaceTrait(Trait):
@@ -55,6 +58,9 @@ class Race(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('race_detail', args=[str(self.id)])
+
 
 class Character(models.Model):
     name = models.CharField(max_length=100,  default="")
@@ -67,6 +73,8 @@ class Character(models.Model):
     race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return reverse('character_detail', args=[str(self.id)])
 
 
 class Class(models.Model):
@@ -77,6 +85,8 @@ class Class(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('class_detail', args=[str(self.id)])
     # proficiencies, features, subclasses
 
 
@@ -86,4 +96,7 @@ class Background(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('background_detail', args=[str(self.id)])
     # proficiencies, languages, equipment
