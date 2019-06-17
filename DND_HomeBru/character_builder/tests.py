@@ -110,7 +110,7 @@ class Character_Builder(TestCase):
         self.assertEqual(no_response.status_code, 404 )
         self.assertContains(response,'test_class')
         self.assertTemplateUsed(response, "class_list.html")
-    
+
     def test_background_list_view(self):
         # print("primary key:" + str(self.post.url))
         response = self.client.get('/backgrounds')
@@ -119,3 +119,19 @@ class Character_Builder(TestCase):
         self.assertEqual(no_response.status_code, 404 )
         self.assertContains(response,'test_background')
         self.assertTemplateUsed(response, "background_list.html")
+
+
+    def test_race_create_view(self):
+        # print("primary key:" + str(self.post.url))
+        response = self.client.post(reverse('race_new'),{
+        'name':'New race',
+        'description': 'New race created from test module',
+        'age': 22,
+        'alignment':'new_alignment',
+        'size': 8,
+        'speed':13
+        })
+        self.assertEqual(response.status_code, 200 )
+        self.assertEqual(no_response.status_code, 404 )
+        self.assertContains(response,'New race')
+        self.assertContains(response,'new_alignment')
