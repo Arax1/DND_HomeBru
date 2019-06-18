@@ -139,7 +139,5 @@ class CharacterBuilder(TestCase):
             'size': 8,
             'speed': 13
         })
-        self.assertEqual(response.status_code, 200)
-       # self.assertEqual(no_response.status_code, 404)
-        self.assertContains(response, 'New race')
-        self.assertContains(response, 'new_alignment')
+        self.assertEqual(response.status_code, 302)
+        
