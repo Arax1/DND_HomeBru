@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="{% url 'background_new' %}" class="button primary icon solid fa-plus" id="create">New Background</a>
 {% for background in backgrounds %}
 <article class="media content-section">
     <div class="media-body">

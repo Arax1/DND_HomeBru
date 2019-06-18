@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="post_entry">
-    <h2>Name:{{ class_details.name }}</h2>
-    <h2>Desscription:{{ class_details.description }}</h2>
-    <h2>Hit Dice:{{ class_details.hit_dice }}</h2>
-  </div>
-  {% endblock %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
+      <small class="text-mute">Hit Dice: 1d{{ object.hit_dice }}</small>
+    </div>
+    <p class="article-content">{{ object.description }}</p>
+</article>
+{% endblock %}

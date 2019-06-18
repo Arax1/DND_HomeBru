@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="{% url 'class_new' %}" class="button primary icon solid fa-plus" id="create">New Class</a>
 {% for class in classes %}
 <article class="media content-section">
     <div class="media-body">

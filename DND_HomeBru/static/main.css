@@ -36,7 +36,7 @@ article.media.content-section {
 		border-radius: 3px;
 		margin-bottom: 35px;
 		box-shadow: 3px 5px 7px 0px black;
-		width: 80%;
+		width: 75%;
 	}
 
 	.article-metadata {
@@ -196,7 +196,6 @@ input, select, textarea {
 		transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		text-decoration: none;
 		color: #585858;
-		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 	}
 
 	a#create {
