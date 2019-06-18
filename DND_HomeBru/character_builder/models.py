@@ -37,11 +37,21 @@ class Classtrait(Trait):
 
 
 class Race(models.Model):
+
+    SIZE_CHOICES = (
+        ('T', "Tiny"),
+        ('S', "Small"),
+        ('M', "Medium"),
+        ('L', "Large"),
+        ('H', "Huge"),
+        ('G', "Gargantuan")
+    )
+
     name = models.CharField(max_length=100)
     description = models.TextField()
     age = models.IntegerField()
     alignment = models.CharField(max_length=100)
-    size = models.IntegerField()
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     speed = models.IntegerField()
 
     # strength_mod = models.IntegerField()

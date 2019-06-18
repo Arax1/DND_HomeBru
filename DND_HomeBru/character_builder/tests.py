@@ -13,7 +13,7 @@ class CharacterBuilder(TestCase):
             description='testing if race model works',
             age=102,
             alignment='buggy',
-            size=14,
+            size="M",
             speed=4
         )
 
@@ -70,7 +70,7 @@ class CharacterBuilder(TestCase):
                          'testing if race model works')
         self.assertEqual(self.race.age, 102)
         self.assertEqual(f'{self.race.alignment}', 'buggy')
-        self.assertEqual(self.race.size, 14)
+        self.assertEqual(self.race.size, "M")
         self.assertEqual(self.race.speed, 4)
 
     def test_character_content(self):
@@ -136,7 +136,7 @@ class CharacterBuilder(TestCase):
             'description': 'New race created from test module',
             'age': 22,
             'alignment': 'new_alignment',
-            'size': 8,
+            'size': "T",
             'speed': 13
         })
         self.assertEqual(response.status_code, 302)
