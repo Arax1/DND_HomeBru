@@ -13,7 +13,7 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     def save(self, force_insert=False, force_update=False, using=None):
-        super( Profile,self).save()
+        super(Profile, self).save()
 
         img = Image.open(self.image.path)
 
