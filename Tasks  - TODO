@@ -15,3 +15,13 @@ Edit/delete and update classes, backgrounds, rcaes, etc
 -Anand will do the card-nice template for everything else
 Fix HTML for DetailView
 Once this is done, it is time for the Character Sheet!
+June 20, 2019
+Make the generic views for delete/update.
+Anand will be working on HTML-front end
+Once delete,edit and update, we can take care of users and how they're going to interact.
+
+Once this is done, make forms prettier with some html.
+
+It'll be good for models to inherit from ContentModel to integrate with user field.
+
+
