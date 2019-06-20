@@ -7,6 +7,17 @@
         <div class="media-body">
             <h2 class="cardlabel"><span class="article-title">{{ user.username }}</span></h2>
             <p class="text-secondary">{{ user.email }}</p>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile Info</legend>
+                    {{ u_form|crispy  }}
+                    {{ p_form|crispy  }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" value="Save" class="button small" type="submit">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </article>
