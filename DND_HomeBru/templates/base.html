@@ -53,9 +53,20 @@
 
 		<!-- Menu -->
 		<nav id="menu">
-			<h2>Menu</h2>
+			{% if user.is_authenticated %}
+			<img class="rounded-circle menu-img" src="{{ user.profile.image.url }}" alt="" /></span>
+			{% else %}
+			<h2 style="text-align: center">Menu</h2>
+			{% endif %}
 			<ul>
 				<li><a href="{% url 'home' %}">Home</a></li>
+				{% if user.is_authenticated %}
+				<li><a href="{% url 'profile' %}">Your Account</a></li>
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">Login</a></li>
+				<li><a href="{% url 'register' %}">Register</a></li>
+				{% endif %}
 				<li><a href="{% url 'race_view' %}">Races</a></li>
 				<li><a href="{% url 'class_view' %}">Classes</a></li>
 				<li><a href="{% url 'background_view' %}">Backgrounds</a></li>
@@ -65,6 +76,11 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
+				{% if messages %}
+				{% for message in messages %}
+				<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+				{% endfor %}
+				{% endif %}
 				{% block content %}
 				{% endblock %}
 			</div>

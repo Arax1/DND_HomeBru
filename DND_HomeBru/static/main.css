@@ -51,6 +51,15 @@ article.media.content-section {
 		border-bottom: 1px solid #dedcdc;
 	}
 	
+	.menu-img {
+		height: 145px;
+		width: 145px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 30px;
+		border: 6.5px solid #353535;
+	  }
 	  
 	.article-metadata a:hover {
 		color: #333;
@@ -67,12 +76,44 @@ article.media.content-section {
 		letter-spacing: 0.10em;
 	}
 
+	.article-svg {
+		width: 25px;
+		height: 25px;
+		vertical-align: middle;
+	  }
+	  
+	  .account-img {
+		height: 125px;
+		width: 125px;
+		margin-right: 20px;
+		margin-bottom: 16px;
+	  }
+	  
+	  .account-heading {
+		font-size: 2.5rem;
+	  }
+
 small.text-mute {
 	color: #b4b4b4!important
 }
 
 body {
 	line-height: 1;
+}
+
+legend.border-bottom.mb-4 {
+    font-size: 250%;
+    font-weight: 600;
+    margin-bottom: 2.5rem!important;
+}
+
+.form-group {
+    margin-bottom: 3.0rem;
+}
+
+
+fieldset.form-group:last-of-type {
+    margin-bottom: auto;
 }
 
 ol, ul {
@@ -236,8 +277,9 @@ input, select, textarea {
 	}
 
     .homebru{
-        color: dodgerblue;
-        letter-spacing: 0.25em;
+        color: white;
+		letter-spacing: 0.25em;
+		text-shadow: 0px 4px 8px black;
     }
 
 		h1 a {
@@ -3072,6 +3114,7 @@ input, select, textarea {
 				list-style: none;
 				margin: 0 0 1em 0;
 				padding: 0;
+				text-align: center;
 			}
 
 				#menu > .inner > ul > li {
