@@ -1,7 +1,7 @@
 # comment
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Race, Class, Background, Character
 
@@ -29,12 +29,22 @@ class RaceCreateView(CreateView):
     success_url = reverse_lazy("home")
     fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
 
+class RaceUpdateView(UpdateView):
+    model =  Race
+    template_name = 'race_update_form.html'
+    # success_url = reverse_lazy('home')
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', ]
+
 
 class RaceDetailView(DetailView):
     model = Race
     context_object_name = "race_details"
     template_name = 'race_detail.html'
 
+class RaceDeleteView(DeleteView):
+    model  = Race
+    template_name = 'race_delete_form.html'
+    success_url = reverse_lazy('home')
 
 class ClassListView(ListView):
     model = Class
@@ -48,12 +58,21 @@ class ClassCreateView(CreateView):
     fields = ['name', 'description', 'hit_dice']
     success_url = reverse_lazy("home")
 
+class ClassUpdateView(UpdateView):
+    model =  Class
+    template_name = 'class_update_form.html'
+    fields = ['name', 'description', 'hit_dice']
+
 
 class ClassDetailView(DetailView):
     model = Class
     context_object_name = "class_details"
     template_name = 'class_detail.html'
 
+class ClassDeleteView(DeleteView):
+    model  = Class
+    template_name = 'class_delete_form.html'
+    success_url = reverse_lazy('home')
 
 class BackgroundListView(ListView):
     model = Background
@@ -67,12 +86,21 @@ class BackgroundCreateView(CreateView):
     fields = ['name', 'description']
     success_url = reverse_lazy("home")
 
+class BackgroundUpdateView(UpdateView):
+    model =  Background
+    template_name = 'background_update_form.html'
+    fields = ['name', 'description']
+
 
 class BackgroundDetailView(DetailView):
     model = Background
     context_object_name = "background_details"
     template_name = 'background_detail.html'
 
+class BackgroundDeleteView(DeleteView):
+    model  = Background
+    template_name = 'background_delete_form.html'
+    success_url = reverse_lazy('home')
 
 class CharacterCreateView(CreateView):
     model = Character
@@ -92,3 +120,14 @@ class CharacterDetailView(DetailView):
     model = Character
     template_name = 'character_detail.html'
     context_object_name = "character_details"
+
+class CharacterUpdateView(UpdateView):
+    model =  Character
+    template_name = 'character_update_form.html'
+    fields = ['name', 'strength', 'intelligence', 'wisdom',
+          'constitution', 'dextirity', 'charisma', 'race_key']
+
+class CharacterDeleteView(DeleteView):
+    model  = Character
+    template_name = 'character_delete_form.html'
+    success_url = reverse_lazy('home')
