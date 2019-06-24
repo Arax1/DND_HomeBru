@@ -41,6 +41,10 @@ class RaceDetailView(DetailView):
     context_object_name = "race_details"
     template_name = 'race_detail.html'
 
+class RaceDeleteView(DeleteView):
+    model  = Race
+    template_name = 'race_delete_form.html'
+    success_url = reverse_lazy('home')
 
 class ClassListView(ListView):
     model = Class
@@ -65,6 +69,10 @@ class ClassDetailView(DetailView):
     context_object_name = "class_details"
     template_name = 'class_detail.html'
 
+class ClassDeleteView(DeleteView):
+    model  = Class
+    template_name = 'class_delete_form.html'
+    success_url = reverse_lazy('home')
 
 class BackgroundListView(ListView):
     model = Background
@@ -92,7 +100,7 @@ class BackgroundDetailView(DetailView):
 class BackgroundDeleteView(DeleteView):
     model  = Background
     template_name = 'background_delete_form.html'
-    success_url = reverse('homebru')
+    success_url = reverse_lazy('home')
 
 class CharacterCreateView(CreateView):
     model = Character
@@ -118,3 +126,8 @@ class CharacterUpdateView(UpdateView):
     template_name = 'character_update_form.html'
     fields = ['name', 'strength', 'intelligence', 'wisdom',
           'constitution', 'dextirity', 'charisma', 'race_key']
+
+class CharacterDeleteView(DeleteView):
+    model  = Character
+    template_name = 'character_delete_form.html'
+    success_url = reverse_lazy('home')
