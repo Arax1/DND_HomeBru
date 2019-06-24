@@ -53,7 +53,7 @@ class Race(models.Model):
     description = models.TextField()
     age = models.IntegerField()
     alignment = models.CharField(max_length=100)
-    size = models.CharField(max_length=1, choices=SIZE_CHOICES)
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
