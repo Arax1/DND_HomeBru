@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 class Trait(models.Model):
     name = models.CharField(max_length=100)
@@ -53,6 +55,7 @@ class Race(models.Model):
     alignment = models.CharField(max_length=100)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     speed = models.IntegerField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # strength_mod = models.IntegerField()
     # dex_mod = models.IntegerField()
@@ -81,8 +84,12 @@ class Character(models.Model):
     constitution = models.IntegerField()
     dextirity = models.IntegerField()
     race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
+
     def get_absolute_url(self):
         return reverse('character_detail', args=[str(self.id)])
 
@@ -91,6 +98,7 @@ class Class(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     hit_dice = models.IntegerField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -103,6 +111,7 @@ class Class(models.Model):
 class Background(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
