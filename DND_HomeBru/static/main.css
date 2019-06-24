@@ -83,15 +83,44 @@ article.media.content-section {
 	  }
 	  
 	  .account-img {
-		height: 125px;
-		width: 125px;
-		margin-right: 20px;
-		margin-bottom: 16px;
+		display: block;
+    	width: 125px;
+    	height: 125px;
+    	margin: auto auto;
+    	transform: translateY(-40%);
+    	border-radius: 50%;
+    	overflow: hidden;
+    	position: relative;
+    	z-index: 4;
+    	box-shadow: 0px 5px 20px 0px black, 0px 0px 0px 5px black;
 	  }
 	  
 	  .account-heading {
 		font-size: 2.5rem;
 	  }
+
+article.media.content-section.profile {
+		width: 20%;
+		float: left;
+	}
+	
+	.media.profile {
+		display: block;
+	}
+	
+	.media-body.profile {
+		text-align: -webkit-center;
+		font-size: small;
+	}
+	
+	.email-dis {
+		font-size: 125%;
+	}
+
+	.update-prof {
+		margin-top: 35px;
+		margin-left: auto;
+	}
 
 small.text-mute {
 	color: #b4b4b4!important
