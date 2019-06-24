@@ -3,6 +3,6 @@
   <h1> Delete character</h1>
   <form action="" method="post">{% csrf_token %}
     <p>Are you sure you want to delete "{{ character.name }}"?</p>
-    <input type="submit" value="Confirm" />
+    <input type="submit" value="Delete" />
   </form>
 {% endblock content %}
