@@ -272,7 +272,7 @@ input, select, textarea {
 		position: sticky;
 		display: grid;
 		top: 8rem;
-		width: 17%;
+		width: auto;
 		float: right;
 	}
 	
