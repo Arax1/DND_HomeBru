@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
-      <small class="text-mute">Hit Dice: 1d{{ object.hit_dice }}</small>
-    </div>
-    <p class="article-content">{{ object.description }}</p>
-</article>
+<div class="side_layout">
+  <div class="butn container">
+    <a href="{% url 'race_edit' object.id %}" class="button primary icon solid" id="side">Update Class</a>
+    <a href="{% url 'race_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Class</a>
+  </div>
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
+        <small class="text-mute">Hit Dice: 1d{{ object.hit_dice }}</small>
+      </div>
+      <p class="article-content">{{ object.description }}</p>
+  </article>
+</div>
 {% endblock %}
