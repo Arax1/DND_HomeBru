@@ -1,30 +1,25 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="side_layout">
-  <div class="butn container">
-    <a href="{% url 'race_edit' object.id %}" class="button primary icon solid" id="side">Update Race</a>
-    <a href="{% url 'race_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Race</a>
-  </div>
-  <article class="media content-section">
-    <div class="media-body">
-      <div class="article-metadata">
-        <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
-        <small class="text-mute">Alignment: {{ object.alignment }}</small>
-      </div>
-      <p class="article-content">{{ object.description }}</p>
-      <div class="article-metadata-lite">
-        <h3 class="article-content">Age</h3>
-      </div>
-      <p class="article-content">{{ object.age }} years</p>
-      <div class="article-metadata-lite">
-        <h3 class="article-content">Size</h3>
-      </div>
-      <p class="article-content">{{ object.get_size_display }}</p>
-      <div class="article-metadata-lite">
-        <h3 class="article-content">Speed</h3>
-      </div>
-      <p class="article-content">Base Walking Speed is {{ object.speed }}ft</p>
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
+      <small class="text-mute">Alignment: {{ object.alignment }}</small>
     </div>
-  </article>
-</div>
+    <p class="article-content">{{ object.description }}</p>
+    <div class="article-metadata-lite">
+      <h3 class="article-content">Age</h3>
+    </div>
+    <p class="article-content">{{ object.age }} years</p>
+    <div class="article-metadata-lite">
+      <h3 class="article-content">Size</h3>
+    </div>
+    <p class="article-content">{{ object.get_size_display }}</p>
+    <div class="article-metadata-lite">
+      <h3 class="article-content">Speed</h3>
+    </div>
+    <p class="article-content">Base Walking Speed is {{ object.speed }}ft</p>
+  </div>
+</article>
 {% endblock %}
