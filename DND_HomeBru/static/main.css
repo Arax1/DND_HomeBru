@@ -284,6 +284,28 @@ input, select, textarea {
 			background-color: #234d75;
 		}
 
+		.butn.container {
+			position: sticky;
+			display: grid;
+			top: 8rem;
+			width: 17%;
+			float: right;
+		}
+		
+	a#side {
+			letter-spacing: 0.20em;
+			margin-bottom: 10px;
+		}
+		
+	a#side-danger {
+			letter-spacing: 0.20em;
+			margin-bottom: 10px;
+		}
+		
+		a#side-danger:hover {
+			background-color: #f50000;
+		}
+
 	strong, b {
 		font-weight: 900;
 	}
