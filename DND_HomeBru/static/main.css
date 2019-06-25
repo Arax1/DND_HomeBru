@@ -268,12 +268,22 @@ input, select, textarea {
 		color: #585858;
 	}
 
+	.butn.container {
+		position: sticky;
+		display: grid;
+		top: 8rem;
+		width: auto;
+		float: right;
+	}
+	
+
 	a#create {
 		float: right;
 		position: sticky;
 		top: 8em;
 		letter-spacing: 0.20em;
 	}
+
 
 		a:hover {
 			border-bottom-color: transparent;
@@ -282,6 +292,20 @@ input, select, textarea {
 
 		a#create:hover {
 			background-color: #234d75;
+		}
+	
+	a#side {
+			letter-spacing: 0.20em;
+			margin-bottom: 10px;
+		}
+		
+	a#side-danger {
+			letter-spacing: 0.20em;
+			margin-bottom: 10px;
+		}
+		
+		a#side-danger:hover {
+			background-color: #f50000;
 		}
 
 	strong, b {
