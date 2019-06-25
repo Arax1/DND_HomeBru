@@ -3,6 +3,11 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
+"""
+
+"""
+
+
 class Trait(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -12,6 +17,7 @@ class Trait(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('trait_detail', args=[str(self.id)])
+
 
 
 class RaceTrait(Trait):
@@ -32,7 +38,7 @@ class RaceTrait(Trait):
 
 
 class Classtrait(Trait):
-    pass
+    unlock_level = models.PositiveIntegerField(default=1)
 
     # foreign key to race
     # make a form for character
@@ -73,27 +79,6 @@ class Race(models.Model):
 
     def get_absolute_url(self):
         return reverse('race_detail', args=[str(self.id)])
-
-
-class Character(models.Model):
-    name = models.CharField(max_length=100,  default="")
-    strength = models.IntegerField()
-    intelligence = models.IntegerField()
-    wisdom = models.IntegerField()
-    charisma = models.IntegerField()
-    constitution = models.IntegerField()
-    dextirity = models.IntegerField()
-    race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
-
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('character_detail', args=[str(self.id)])
-
-
 class Class(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -106,6 +91,28 @@ class Class(models.Model):
     def get_absolute_url(self):
         return reverse('class_detail', args=[str(self.id)])
     # proficiencies, features, subclasses
+
+class Character(models.Model):
+    name = models.CharField(max_length=100,  default="")
+    level = models.PositiveIntegerField(default =1)
+    strength = models.IntegerField()
+    intelligence = models.IntegerField()
+    wisdom = models.IntegerField()
+    charisma = models.IntegerField()
+    constitution = models.IntegerField()
+    dextirity = models.IntegerField()
+    race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
+    # class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('character_detail', args=[str(self.id)])
+
+
+
 
 
 class Background(models.Model):

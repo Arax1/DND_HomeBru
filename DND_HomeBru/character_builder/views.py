@@ -197,7 +197,7 @@ class CharacterCreateView(LoginRequiredMixin, CreateView):
     model = Character
     template_name = "character_create_form.html"
     fields = ['name', 'strength', 'intelligence', 'wisdom',
-              'constitution', 'dextirity', 'charisma', 'race_key']
+              'constitution', 'dextirity', 'charisma', 'race_key', 'class_key']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -208,7 +208,7 @@ class CharacterUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Character
     template_name = 'character_update_form.html'
     fields = ['name', 'strength', 'intelligence', 'wisdom',
-              'constitution', 'dextirity', 'charisma', 'race_key']
+              'constitution', 'dextirity', 'charisma', 'race_key', 'class_key']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

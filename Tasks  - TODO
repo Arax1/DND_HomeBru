@@ -22,6 +22,11 @@ Once delete,edit and update, we can take care of users and how they're going to 
 
 Once this is done, make forms prettier with some html.
 
+
+
 It'll be good for models to inherit from ContentModel to integrate with user field.
-
-
+-------------------------------------------------
+Next steps --  June 25, 2019
+1. Adding in Racial Traits, Class Features, Background Traits, and the rest
+2. Setting up the character builder and having the user manage the character's race, class and background
+3. HTML design for the character sheet and making it responsive
