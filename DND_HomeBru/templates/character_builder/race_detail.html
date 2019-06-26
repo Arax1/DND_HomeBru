@@ -26,6 +26,12 @@
         <h3 class="article-content">Speed</h3>
       </div>
       <p class="article-content">Base Walking Speed is {{ object.speed }}ft</p>
+      <div class="article-metadata-lite">
+        <h3 class="article-content">Traits</h3>
+      </div>
+      {% for trait in object.traits.all %}
+      <p class="article-content">{{ trait }}</p>
+      {% endfor %}
     </div>
   </article>
 </div>

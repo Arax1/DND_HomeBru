@@ -3,8 +3,8 @@
 <div class="side_layout">
   {% if object.author == user %}
   <div class="butn container">
-    <a href="{% url 'race_edit' object.id %}" class="button primary icon solid" id="side">Update Background</a>
-    <a href="{% url 'race_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Background</a>
+    <a href="{% url 'background_edit' object.id %}" class="button primary icon solid" id="side">Update Background</a>
+    <a href="{% url 'background_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Background</a>
   </div>
   {% endif %}
   <article class="media content-section">

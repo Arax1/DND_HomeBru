@@ -62,13 +62,7 @@ class Race(models.Model):
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # strength_mod = models.IntegerField()
-    # dex_mod = models.IntegerField()
-    # con_mod = models.IntegerField()
-    # int_mod = models.IntegerField()
-    # wis_mod = models.IntegerField()
-    # cha_mod = models.IntegerField()
+    traits = models.ManyToManyField(Trait)
 
     # make a form for race, make this as simple as possible
     # traits = foreigh_key(RaceTrait), on_delete==CASCADE
@@ -76,6 +70,10 @@ class Race(models.Model):
 
     def __str__(self):
         return self.name
+
+    # def get_traits_choices(self):
+
+
 
     def get_absolute_url(self):
         return reverse('race_detail', args=[str(self.id)])
@@ -102,7 +100,7 @@ class Character(models.Model):
     constitution = models.IntegerField()
     dextirity = models.IntegerField()
     race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
-    # class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE)
+    class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

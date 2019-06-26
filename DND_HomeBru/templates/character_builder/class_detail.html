@@ -3,10 +3,10 @@
 <div class="side_layout">
   {% if object.author == user %}
   <div class="butn container">
-    <a href="{% url 'race_edit' object.id %}" class="button primary icon solid" id="side">Update Class</a>
-    <a href="{% url 'race_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Class</a>
+    <a href="{% url 'class_edit' object.id %}" class="button primary icon solid" id="side">Update Class</a>
+    <a href="{% url 'class_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Class</a>
   </div>
-  {% if object.author == user %}
+  {% endif %}
   <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
@@ -16,4 +16,4 @@
       <p class="article-content">{{ object.description }}</p>
   </article>
 </div>
-{% endblock %}
+{% endblock content %}
