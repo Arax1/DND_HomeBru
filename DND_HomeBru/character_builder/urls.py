@@ -26,6 +26,11 @@ urlpatterns = [
     path('class/delete/<int:pk>', ClassDeleteView.as_view(), name="class_delete"),
     path('background/delete/<int:pk>', BackgroundDeleteView.as_view(), name="background_delete"),
     path('character/delete/<int:pk>', CharacterDeleteView.as_view(), name="character_delete"),
-    path('trait/new', TraitCreateView.as_view(), name='trait_new')
+    path('trait/new', TraitCreateView.as_view(), name='trait_new'),
+    path('traits', TraitListView.as_view(), name='trait_view'),
+    path('trait/edit/<int:pk>', TraitUpdateView.as_view(), name='trait_edit'),
+    path('trait/delete/<int:pk>', TraitDeleteView.as_view(), name= 'trait_delete'),
+    path('trait/detail/<int:pk>', TraitDetailView.as_view(), name= 'trait_detail'),
+
 
 ]
