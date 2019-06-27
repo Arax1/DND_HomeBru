@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load character_builder_extras %}
 <div class="side_layout">
   {% if object.author == user %}
   <div class="butn container">
@@ -12,7 +13,7 @@
       <div class="article-metadata">
         <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
       </div>
-      <p class="article-content">{{ object.description }}</p>
+      <p class="article-content">{{ object.description|upper }}</p>
   </article>
 </div>
 {% endblock %}
