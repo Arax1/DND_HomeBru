@@ -6,4 +6,4 @@ def upper(value): # Only one argument.
     """Converts a string into all uppercase"""
     return value.upper()
 
-register.filter('upper', upper)
+register.filter('upper', upper) 
