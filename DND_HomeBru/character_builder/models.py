@@ -19,9 +19,8 @@ class Trait(models.Model):
         return reverse('trait_detail', args=[str(self.id)])
 
 
-
 class RaceTrait(Trait):
-    race = models.ForeignKey('Race', on_delete = models.CASCADE)
+    race = models.ForeignKey('Race', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('race_trait_detail', args=[str(self.id)])
@@ -65,8 +64,7 @@ class Race(models.Model):
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    #Make this part of RaceTrait
-
+    # Make this part of RaceTrait
 
     # make a form for race, make this as simple as possible
     # traits = foreigh_key(RaceTrait), on_delete==CASCADE
@@ -77,10 +75,10 @@ class Race(models.Model):
 
     # def get_traits_choices(self):
 
-
-
     def get_absolute_url(self):
         return reverse('race_detail', args=[str(self.id)])
+
+
 class Class(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -94,9 +92,10 @@ class Class(models.Model):
         return reverse('class_detail', args=[str(self.id)])
     # proficiencies, features, subclasses
 
+
 class Character(models.Model):
     name = models.CharField(max_length=100,  default="")
-    level = models.PositiveIntegerField(default =1)
+    level = models.PositiveIntegerField(default=1)
     strength = models.IntegerField()
     intelligence = models.IntegerField()
     wisdom = models.IntegerField()
@@ -112,9 +111,6 @@ class Character(models.Model):
 
     def get_absolute_url(self):
         return reverse('character_detail', args=[str(self.id)])
-
-
-
 
 
 class Background(models.Model):
