@@ -6,11 +6,13 @@ from django.urls import reverse_lazy
 from .models import Race, Class, Background, Character, Trait, RaceTrait
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-# Create your views here.
-
-# homepage view
 TEMPLATE_FOLDER = 'character_builder/'
 
+
+# Create your views here.
+
+
+# homepage view
 def homepage(request):
     return render(request, "home.html", {'title': 'HomeBru - Home'})
 
@@ -22,10 +24,13 @@ class RaceListView(ListView):
     template_name = TEMPLATE_FOLDER +'race_list.html'
     context_object_name = "races"
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(RaceListView, self).get_context_data(**kwargs)
+    #     context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
+    #     return context
 
 class RaceDetailView(DetailView):
-    # I think we should stick to this convention; it is more explicit.
-    queryset = Race.objects.all()
+    model = Race
     context_object_name = "race_details"
     template_name = TEMPLATE_FOLDER +'race_detail.html'
 
@@ -40,17 +45,21 @@ class RaceDetailView(DetailView):
 class RaceCreateView(LoginRequiredMixin, CreateView):
     model = Race
     template_name = TEMPLATE_FOLDER + 'race_create_form.html'
-    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', 'traits' ]
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed' ]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super(RaceCreateView, self).get_context_data(**kwargs)
+        context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
+        return context
 
 
 class RaceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Race
     template_name = TEMPLATE_FOLDER +'race_update_form.html'
-    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed', 'traits' ]
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed' ]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -275,9 +284,7 @@ class TraitUpdateView( UpdateView):
     fields = ['name','description']
 
 class RaceTraitCreateView( CreateView):
-
-
-    queryset = RaceTrait.objects.all()
+    model = RaceTrait
     template_name = TEMPLATE_FOLDER +'race_trait_create_form.html'
     fields = ['name','description', 'race']
     success_url = reverse_lazy('home')
