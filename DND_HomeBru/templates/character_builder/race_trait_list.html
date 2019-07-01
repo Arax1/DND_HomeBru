@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'race_trait_new' %}" class="button primary icon solid fa-plus" id="create">New Trait</a>
+{% for race_trait in race_traits %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2 class="cardlabel"><a class="article-title"
+                    href="{{ race_trait.get_absolute_url }}">{{ race_trait.name }}</a>
+            </h2>
+        </div>
+        <p class="article-content">{{ race_trait.description }}</p>
+    </div>
+</article>
+{% endfor  %}
+{% endblock content %}

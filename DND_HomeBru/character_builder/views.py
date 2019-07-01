@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Race, Class, Background, Character, Trait
+from .models import Race, Class, Background, Character, Trait, RaceTrait
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
@@ -24,9 +24,15 @@ class RaceListView(ListView):
 
 
 class RaceDetailView(DetailView):
-    model = Race
+    # I think we should stick to this convention; it is more explicit.
+    queryset = Race.objects.all()
     context_object_name = "race_details"
     template_name = TEMPLATE_FOLDER +'race_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RaceDetailView, self).get_context_data(**kwargs)
+        context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
+        return context
 
 # view creating the races
 
@@ -237,17 +243,13 @@ class CharacterDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-class TraitCreateView(LoginRequiredMixin, CreateView):
+class TraitCreateView( CreateView):
     model = Trait
     template_name = TEMPLATE_FOLDER +'trait_create_form.html'
     fields = ['name','description']
     success_url = reverse_lazy('home')
 
-    def test_func(self):
-        object = self.get_object()
-        if self.request.user == object.author:
-            return True
-        return False
+
 
 class TraitListView(ListView):
     model  = Trait
@@ -260,31 +262,49 @@ class TraitDetailView(DetailView):
     context_object_name  = 'trait_details'
 
 
-class TraitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class TraitDeleteView( DeleteView):
     model = Trait
     template_name = TEMPLATE_FOLDER +'trait_delete_form.html'
     success_url = reverse_lazy('home')
 
-    def test_func(self):
-        object = self.get_object()
-        if self.request.user == object.author:
-            return True
 
-        return False
 
-class TraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class TraitUpdateView( UpdateView):
     model = Trait
     template_name = TEMPLATE_FOLDER +'trait_update_form.html'
     fields = ['name','description']
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+class RaceTraitCreateView( CreateView):
 
-    def test_func(self):
-        object = self.get_object()
 
-        if self.request.user == object.author:
-            return True
+    queryset = RaceTrait.objects.all()
+    template_name = TEMPLATE_FOLDER +'race_trait_create_form.html'
+    fields = ['name','description', 'race']
+    success_url = reverse_lazy('home')
 
-        return False
+
+
+
+class RaceTraitListView(ListView):
+    model  = RaceTrait
+    template_name = TEMPLATE_FOLDER + 'race_trait_list.html'
+    context_object_name = 'race_traits'
+
+class RaceTraitDetailView(DetailView):
+    model = RaceTrait
+    template_name = TEMPLATE_FOLDER + 'race_trait_detail.html'
+    context_object_name  = 'race_trait_details'
+
+
+class RaceTraitDeleteView( DeleteView):
+    model = RaceTrait
+    template_name = TEMPLATE_FOLDER +'race_trait_delete_form.html'
+    success_url = reverse_lazy('home')
+    context_object_name = 'race_trait'
+
+
+
+class RaceTraitUpdateView( UpdateView):
+    model = RaceTrait
+    template_name = TEMPLATE_FOLDER +'race_trait_update_form.html'
+    fields = ['name','description', 'race']

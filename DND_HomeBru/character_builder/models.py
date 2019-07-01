@@ -11,7 +11,6 @@ from django.contrib.auth.models import User
 class Trait(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -22,7 +21,10 @@ class Trait(models.Model):
 
 
 class RaceTrait(Trait):
-    pass
+    race = models.ForeignKey('Race', on_delete = models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('race_trait_detail', args=[str(self.id)])
 
 # class RaceTrait(Trait):
 #
@@ -63,7 +65,8 @@ class Race(models.Model):
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    traits = models.ManyToManyField(Trait)
+    #Make this part of RaceTrait
+
 
     # make a form for race, make this as simple as possible
     # traits = foreigh_key(RaceTrait), on_delete==CASCADE
