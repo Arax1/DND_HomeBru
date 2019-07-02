@@ -287,7 +287,7 @@ class TraitUpdateView(UpdateView):
     fields = ['name', 'description']
 
 
-class RaceTraitCreateView(CreateView):
+class RaceTraitCreateView(LoginRequiredMixin, CreateView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_create_form.html'
     fields = ['name', 'description', ]
@@ -310,14 +310,34 @@ class RaceTraitDetailView(DetailView):
     context_object_name = 'race_trait_details'
 
 
-class RaceTraitDeleteView(DeleteView):
+class RaceTraitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_delete_form.html'
     success_url = reverse_lazy('home')
     context_object_name = 'race_trait'
 
+    def test_func(self):
+        object = self.get_object()
 
-class RaceTraitUpdateView(UpdateView):
+        if self.request.user == object.race.author:
+            return True
+
+        return False
+
+
+class RaceTraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_update_form.html'
-    fields = ['name', 'description', 'race']
+    fields = ['name', 'description', ]
+
+    def form_valid(self, form):
+        form.instance.race = get_object_or_404(Race, pk=self.kwargs['pk'])
+        return super().form_valid(form)
+
+    def test_func(self):
+        object = self.get_object()
+
+        if self.request.user == object.race.author:
+            return True
+
+        return False
