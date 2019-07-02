@@ -1,5 +1,5 @@
 # comment
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -21,7 +21,7 @@ def homepage(request):
 
 class RaceListView(ListView):
     model = Race
-    template_name = TEMPLATE_FOLDER +'race_list.html'
+    template_name = TEMPLATE_FOLDER + 'race_list.html'
     context_object_name = "races"
 
     # def get_context_data(self, **kwargs):
@@ -29,14 +29,16 @@ class RaceListView(ListView):
     #     context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
     #     return context
 
+
 class RaceDetailView(DetailView):
     model = Race
     context_object_name = "race_details"
-    template_name = TEMPLATE_FOLDER +'race_detail.html'
+    template_name = TEMPLATE_FOLDER + 'race_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(RaceDetailView, self).get_context_data(**kwargs)
-        context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
+        context['race_traits'] = RaceTrait.objects.filter(
+            race=self.get_object())
         return context
 
 # view creating the races
@@ -45,21 +47,23 @@ class RaceDetailView(DetailView):
 class RaceCreateView(LoginRequiredMixin, CreateView):
     model = Race
     template_name = TEMPLATE_FOLDER + 'race_create_form.html'
-    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed' ]
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super(RaceCreateView, self).get_context_data(**kwargs)
-        context['race_traits'] = RaceTrait.objects.filter(race=self.get_object())
+        context['race_traits'] = RaceTrait.objects.filter(
+            race=self.get_object())
         return context
 
 
 class RaceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Race
-    template_name = TEMPLATE_FOLDER +'race_update_form.html'
-    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed' ]
+    template_name = TEMPLATE_FOLDER + 'race_update_form.html'
+    fields = ['name', 'description', 'age', 'alignment', 'size', 'speed']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -76,7 +80,7 @@ class RaceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class RaceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Race
-    template_name = TEMPLATE_FOLDER +'race_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'race_delete_form.html'
     success_url = reverse_lazy('race_view')
 
     def test_func(self):
@@ -90,14 +94,14 @@ class RaceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class ClassListView(ListView):
     model = Class
-    template_name = TEMPLATE_FOLDER +  'class_list.html'
+    template_name = TEMPLATE_FOLDER + 'class_list.html'
     context_object_name = "classes"
 
 
 class ClassDetailView(DetailView):
     model = Class
     context_object_name = "class_details"
-    template_name = TEMPLATE_FOLDER +'class_detail.html'
+    template_name = TEMPLATE_FOLDER + 'class_detail.html'
 
 
 class ClassCreateView(LoginRequiredMixin, CreateView):
@@ -112,7 +116,7 @@ class ClassCreateView(LoginRequiredMixin, CreateView):
 
 class ClassUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Class
-    template_name = TEMPLATE_FOLDER +'class_update_form.html'
+    template_name = TEMPLATE_FOLDER + 'class_update_form.html'
     fields = ['name', 'description', 'hit_dice']
 
     def form_valid(self, form):
@@ -130,7 +134,7 @@ class ClassUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ClassDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Class
-    template_name = TEMPLATE_FOLDER +'class_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'class_delete_form.html'
     success_url = reverse_lazy('class_view')
 
     def test_func(self):
@@ -151,7 +155,7 @@ class BackgroundListView(ListView):
 class BackgroundDetailView(DetailView):
     model = Background
     context_object_name = "background_details"
-    template_name = TEMPLATE_FOLDER +'background_detail.html'
+    template_name = TEMPLATE_FOLDER + 'background_detail.html'
 
 
 class BackgroundCreateView(LoginRequiredMixin, CreateView):
@@ -166,7 +170,7 @@ class BackgroundCreateView(LoginRequiredMixin, CreateView):
 
 class BackgroundUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Background
-    template_name = TEMPLATE_FOLDER +'background_update_form.html'
+    template_name = TEMPLATE_FOLDER + 'background_update_form.html'
     fields = ['name', 'description']
 
     def form_valid(self, form):
@@ -184,7 +188,7 @@ class BackgroundUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class BackgroundDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Background
-    template_name = TEMPLATE_FOLDER +'background_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'background_delete_form.html'
     success_url = reverse_lazy('background_view')
 
     def test_func(self):
@@ -198,13 +202,13 @@ class BackgroundDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class CharacterListView(ListView):
     model = Character
-    template_name = TEMPLATE_FOLDER +  'character_list.html'
+    template_name = TEMPLATE_FOLDER + 'character_list.html'
     context_object_name = 'characters'
 
 
 class CharacterDetailView(DetailView):
     model = Character
-    template_name = TEMPLATE_FOLDER +'character_detail.html'
+    template_name = TEMPLATE_FOLDER + 'character_detail.html'
     context_object_name = "character_details"
 
 
@@ -221,7 +225,7 @@ class CharacterCreateView(LoginRequiredMixin, CreateView):
 
 class CharacterUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Character
-    template_name = TEMPLATE_FOLDER +'character_update_form.html'
+    template_name = TEMPLATE_FOLDER + 'character_update_form.html'
     fields = ['name', 'strength', 'intelligence', 'wisdom',
               'constitution', 'dextirity', 'charisma', 'race_key', 'class_key']
 
@@ -240,7 +244,7 @@ class CharacterUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class CharacterDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Character
-    template_name = TEMPLATE_FOLDER +'character_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'character_delete_form.html'
     success_url = reverse_lazy('character_view')
 
     def test_func(self):
@@ -252,66 +256,68 @@ class CharacterDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-class TraitCreateView( CreateView):
+class TraitCreateView(CreateView):
     model = Trait
-    template_name = TEMPLATE_FOLDER +'trait_create_form.html'
-    fields = ['name','description']
+    template_name = TEMPLATE_FOLDER + 'trait_create_form.html'
+    fields = ['name', 'description']
     success_url = reverse_lazy('home')
 
 
-
 class TraitListView(ListView):
-    model  = Trait
+    model = Trait
     template_name = TEMPLATE_FOLDER + 'trait_list.html'
     context_object_name = 'traits'
+
 
 class TraitDetailView(DetailView):
     model = Trait
     template_name = TEMPLATE_FOLDER + 'trait_detail.html'
-    context_object_name  = 'trait_details'
+    context_object_name = 'trait_details'
 
 
-class TraitDeleteView( DeleteView):
+class TraitDeleteView(DeleteView):
     model = Trait
-    template_name = TEMPLATE_FOLDER +'trait_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'trait_delete_form.html'
     success_url = reverse_lazy('home')
 
 
-
-class TraitUpdateView( UpdateView):
+class TraitUpdateView(UpdateView):
     model = Trait
-    template_name = TEMPLATE_FOLDER +'trait_update_form.html'
-    fields = ['name','description']
+    template_name = TEMPLATE_FOLDER + 'trait_update_form.html'
+    fields = ['name', 'description']
 
-class RaceTraitCreateView( CreateView):
+
+class RaceTraitCreateView(CreateView):
     model = RaceTrait
-    template_name = TEMPLATE_FOLDER +'race_trait_create_form.html'
-    fields = ['name','description', 'race']
+    template_name = TEMPLATE_FOLDER + 'race_trait_create_form.html'
+    fields = ['name', 'description', ]
     success_url = reverse_lazy('home')
 
-
+    def form_valid(self, form):
+        form.instance.race = get_object_or_404(Race, pk=self.kwargs['pk'])
+        return super().form_valid(form)
 
 
 class RaceTraitListView(ListView):
-    model  = RaceTrait
+    model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_list.html'
     context_object_name = 'race_traits'
+
 
 class RaceTraitDetailView(DetailView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_detail.html'
-    context_object_name  = 'race_trait_details'
+    context_object_name = 'race_trait_details'
 
 
-class RaceTraitDeleteView( DeleteView):
+class RaceTraitDeleteView(DeleteView):
     model = RaceTrait
-    template_name = TEMPLATE_FOLDER +'race_trait_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'race_trait_delete_form.html'
     success_url = reverse_lazy('home')
     context_object_name = 'race_trait'
 
 
-
-class RaceTraitUpdateView( UpdateView):
+class RaceTraitUpdateView(UpdateView):
     model = RaceTrait
-    template_name = TEMPLATE_FOLDER +'race_trait_update_form.html'
-    fields = ['name','description', 'race']
+    template_name = TEMPLATE_FOLDER + 'race_trait_update_form.html'
+    fields = ['name', 'description', 'race']

@@ -13,7 +13,8 @@ urlpatterns = [
     path('race/delete/<int:pk>', RaceDeleteView.as_view(), name="race_delete"),
 
     # Paths for Race Trait Views
-    path('race/trait/new', RaceTraitCreateView.as_view(), name='race_trait_new'),
+    path('race/detail/new/<int:pk>',
+         RaceTraitCreateView.as_view(), name='race_trait_new'),
     path('race/traits', RaceTraitListView.as_view(), name='race_trait_view'),
     path('race/trait/edit/<int:pk>',
          RaceTraitUpdateView.as_view(), name='race_trait_edit'),
