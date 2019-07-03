@@ -1,4 +1,12 @@
-from . import *
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from character_builder.models import Background
+TEMPLATE_FOLDER = 'character_builder/'
+
+
 class BackgroundListView(ListView):
     model = Background
     template_name = TEMPLATE_FOLDER + 'background_list.html'
@@ -8,7 +16,7 @@ class BackgroundListView(ListView):
 class BackgroundDetailView(DetailView):
     model = Background
     context_object_name = "background_details"
-    template_name = TEMPLATE_FOLDER +'background_detail.html'
+    template_name = TEMPLATE_FOLDER + 'background_detail.html'
 
 
 class BackgroundCreateView(LoginRequiredMixin, CreateView):
@@ -23,7 +31,7 @@ class BackgroundCreateView(LoginRequiredMixin, CreateView):
 
 class BackgroundUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Background
-    template_name = TEMPLATE_FOLDER +'background_update_form.html'
+    template_name = TEMPLATE_FOLDER + 'background_update_form.html'
     fields = ['name', 'description']
 
     def form_valid(self, form):
@@ -41,7 +49,7 @@ class BackgroundUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class BackgroundDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Background
-    template_name = TEMPLATE_FOLDER +'background_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'background_delete_form.html'
     success_url = reverse_lazy('background_view')
 
     def test_func(self):

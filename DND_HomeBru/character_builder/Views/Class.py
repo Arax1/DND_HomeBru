@@ -1,15 +1,23 @@
-from . import *
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from character_builder.models import Class
+
+TEMPLATE_FOLDER = 'character_builder/'
+
 
 class ClassListView(ListView):
     model = Class
-    template_name = TEMPLATE_FOLDER +  'class_list.html'
+    template_name = TEMPLATE_FOLDER + 'class_list.html'
     context_object_name = "classes"
 
 
 class ClassDetailView(DetailView):
     model = Class
     context_object_name = "class_details"
-    template_name = TEMPLATE_FOLDER +'class_detail.html'
+    template_name = TEMPLATE_FOLDER + 'class_detail.html'
 
 
 class ClassCreateView(LoginRequiredMixin, CreateView):
@@ -24,7 +32,7 @@ class ClassCreateView(LoginRequiredMixin, CreateView):
 
 class ClassUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Class
-    template_name = TEMPLATE_FOLDER +'class_update_form.html'
+    template_name = TEMPLATE_FOLDER + 'class_update_form.html'
     fields = ['name', 'description', 'hit_dice']
 
     def form_valid(self, form):
@@ -42,7 +50,7 @@ class ClassUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ClassDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Class
-    template_name = TEMPLATE_FOLDER +'class_delete_form.html'
+    template_name = TEMPLATE_FOLDER + 'class_delete_form.html'
     success_url = reverse_lazy('class_view')
 
     def test_func(self):
