@@ -36,8 +36,9 @@
         <h3 class="article-content">{{ trait }}</h3>
       </div>
       <p class="article-content">{{ trait.description }}</p>
-      {% endfor %}
       <a href="{% url 'race_trait_new' object.id %}" class="button small icon solid" id="rtrait">Add Trait</a>
+      {% endfor %}
+
     </div>
   </article>
 </div>
