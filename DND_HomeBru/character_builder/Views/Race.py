@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -82,33 +82,46 @@ class RaceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-class RaceTraitCreateView(CreateView):
+class RaceTraitCreateView(LoginRequiredMixin, CreateView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_create_form.html'
-    fields = ['name', 'description', 'race']
-    success_url = reverse_lazy('home')
+    fields = ['name', 'description', ]
+    success_url = reverse_lazy('race_view')
+
+    def form_valid(self, form):
+        form.instance.race = get_object_or_404(Race, pk=self.kwargs['pk'])
+        return super().form_valid(form)
 
 
-class RaceTraitListView(ListView):
-    model = RaceTrait
-    template_name = TEMPLATE_FOLDER + 'race_trait_list.html'
-    context_object_name = 'race_traits'
-
-
-class RaceTraitDetailView(DetailView):
-    model = RaceTrait
-    template_name = TEMPLATE_FOLDER + 'race_trait_detail.html'
-    context_object_name = 'race_trait_details'
-
-
-class RaceTraitDeleteView(DeleteView):
+class RaceTraitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_delete_form.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('race_view')
     context_object_name = 'race_trait'
 
+    def test_func(self):
+        object = self.get_object()
 
-class RaceTraitUpdateView(UpdateView):
+        if self.request.user == object.race.author:
+            return True
+
+        return False
+
+
+class RaceTraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_update_form.html'
-    fields = ['name', 'description', 'race']
+    fields = ['name', 'description', ]
+    success_url = reverse_lazy('race_view')
+
+    def form_valid(self, form):
+        form.instance.race = get_object_or_404(Race, pk=self.kwargs['rpk'])
+        return super().form_valid(form)
+
+    def test_func(self):
+        object = self.get_object()
+
+        if self.request.user == object.race.author:
+            return True
+
+        return False

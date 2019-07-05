@@ -30,7 +30,8 @@
       <div class="article-metadata-lite">
         {% if object.author == user %}
         <small class="text-mute side"><a href="{% url 'race_trait_delete' trait.id %}" class="delete">Delete</a></small>
-        <small class="text-mute side"><a href="{% url 'race_trait_edit' trait.id %}" class="edit">Edit</a></small>
+        <small class="text-mute side"><a href="{% url 'race_trait_edit' trait.id object.id %}"
+            class="edit">Edit</a></small>
         {% endif %}
         <h3 class="article-content">{{ trait }}</h3>
       </div>
