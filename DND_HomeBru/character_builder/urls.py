@@ -47,5 +47,9 @@ urlpatterns = [
     path('character/delete/<int:pk>',
          CharacterDeleteView.as_view(), name="character_delete"),
 
+    # Other Paths
+    path('user/<str:username>',
+         UserContentListView.as_view(), name="profile_content")
+
 
 ]

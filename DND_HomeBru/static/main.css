@@ -74,6 +74,7 @@ article.media.content-section {
 	span.article-title {
 		font-size: 200%;
 		letter-spacing: 0.10em;
+		word-break: break-all;
 	}
 
 	.article-svg {
@@ -100,7 +101,7 @@ article.media.content-section {
 	  }
 
 article.media.content-section.profile {
-		width: auto;
+		width: 20%;
 		float: left;
 	}
 	
@@ -111,10 +112,6 @@ article.media.content-section.profile {
 	.media-body.profile {
 		text-align: center;
     	font-size: 1vw;
-	}
-	
-	.email-dis {
-		font-size: 125%;
 	}
 
 	.update-prof {

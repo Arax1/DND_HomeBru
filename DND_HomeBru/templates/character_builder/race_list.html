@@ -7,7 +7,8 @@
         <div class="article-metadata">
             <h2 class="cardlabel"><a class="article-title" href="{{ race.get_absolute_url }}">{{ race.name }}</a>
             </h2>
-            <small class="text-mute">{{ race.author }}</small>
+            <small class="text-mute"><a href="{% url 'profile_content' race.author.username %}"
+                    class="edit">{{ race.author }}</a></small>
         </div>
         <p class="article-content">{{ race.description }}</p>
     </div>
