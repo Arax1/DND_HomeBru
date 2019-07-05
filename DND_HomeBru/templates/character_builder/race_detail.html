@@ -1,44 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="side_layout">
-  {% if object.author == user %}
+  {% if race_details.author == user %}
   <div class="butn container">
-    <a href="{% url 'race_edit' object.id %}" class="button primary icon solid" id="side">Update Race</a>
-    <a href="{% url 'race_delete' object.id %}" class="button primary icon solid" id="side-danger">Delete Race</a>
+    <a href="{% url 'race_edit' race_details.id %}" class="button primary icon solid" id="side">Update Race</a>
+    <a href="{% url 'race_delete' race_details.id %}" class="button primary icon solid" id="side-danger">Delete Race</a>
   </div>
   {% endif %}
   <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
-        <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
-        <small class="text-mute">Alignment: {{ object.alignment }}</small>
+        <h2 class="cardlabel"><span class="article-title">{{ race_details.name }}</span></h2>
+        <small class="text-mute">Alignment: {{ race_details.alignment }}</small>
       </div>
-      <p class="article-content">{{ object.description }}</p>
+      <p class="article-content">{{ race_details.description }}</p>
       <div class="article-metadata-lite">
         <h3 class="article-content">Age</h3>
       </div>
-      <p class="article-content">{{ object.age }} years</p>
+      <p class="article-content">{{ race_details.age }} years</p>
       <div class="article-metadata-lite">
         <h3 class="article-content">Size</h3>
       </div>
-      <p class="article-content">{{ object.get_size_display }}</p>
+      <p class="article-content">{{ race_details.get_size_display }}</p>
       <div class="article-metadata-lite">
         <h3 class="article-content">Speed</h3>
       </div>
-      <p class="article-content">Base Walking Speed is {{ object.speed }}ft</p>
+      <p class="article-content">Base Walking Speed is {{ race_details.speed }}ft</p>
       {% for trait in race_traits %}
       <div class="article-metadata-lite">
-        {% if object.author == user %}
         <small class="text-mute side"><a href="{% url 'race_trait_delete' trait.id %}" class="delete">Delete</a></small>
-        <small class="text-mute side"><a href="{% url 'race_trait_edit' trait.id object.id %}"
+        <small class="text-mute side"><a href="{% url 'race_trait_edit' trait.id race_details.id %}"
             class="edit">Edit</a></small>
-        {% endif %}
         <h3 class="article-content">{{ trait }}</h3>
       </div>
       <p class="article-content">{{ trait.description }}</p>
-      <a href="{% url 'race_trait_new' object.id %}" class="button small icon solid" id="rtrait">Add Trait</a>
       {% endfor %}
-
+      {% if race_details.author == user %}
+      <a href="{% url 'race_trait_new' race_details.id %}" class="button small icon solid" id="rtrait">Add Trait</a>
+      {% endif %}
     </div>
   </article>
 </div>
