@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from character_builder.models import Race, RaceTrait
 
 TEMPLATE_FOLDER = 'character_builder/'
@@ -86,11 +86,13 @@ class RaceTraitCreateView(LoginRequiredMixin, CreateView):
     model = RaceTrait
     template_name = TEMPLATE_FOLDER + 'race_trait_create_form.html'
     fields = ['name', 'description', ]
-    success_url = reverse_lazy('race_view')
 
     def form_valid(self, form):
         form.instance.race = get_object_or_404(Race, pk=self.kwargs['pk'])
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('race_detail', kwargs={'pk': self.kwargs['pk']})
 
 
 class RaceTraitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -106,6 +108,11 @@ class RaceTraitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
 
         return False
+
+    def get_success_url(self):
+        object = self.get_object()
+
+        return reverse('race_detail', kwargs={'pk': object.race.id})
 
 
 class RaceTraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -125,3 +132,8 @@ class RaceTraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
 
         return False
+
+    def get_success_url(self):
+        object = self.get_object()
+
+        return reverse('race_detail', kwargs={'pk': object.race.id})
