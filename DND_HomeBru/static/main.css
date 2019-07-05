@@ -126,6 +126,11 @@ small.text-mute {
 	color: #b4b4b4!important
 }
 
+small.text-mute.side {
+    float: right;
+    margin-right: 10px;
+}
+
 body {
 	line-height: 1;
 }
@@ -305,6 +310,31 @@ input, select, textarea {
 		a#side-danger:hover {
 			background-color: #f50000;
 		}
+	
+	a#rtrait {
+			letter-spacing: 0.10em;
+			margin-top: 10px;
+		}
+	
+	a.edit {
+			text-decoration: none;
+			color: #b4b4b4!important;
+		}
+
+		a.edit:hover {
+			color: #27abec !important;
+		}
+	
+	a.delete {
+			text-decoration: none;
+			color: #b4b4b4!important;
+		}
+
+		a.delete:hover {
+			color: #d40101de !important;
+		}
+		
+		
 
 	strong, b {
 		font-weight: 900;
@@ -2662,6 +2692,8 @@ input, select, textarea {
 		button.small,
 		.button.small {
 			font-size: 0.6em;
+    		text-decoration: none;
+    		letter-spacing: 0.1em;
 		}
 
 		input[type="submit"].large,
@@ -2680,6 +2712,7 @@ input, select, textarea {
 			box-shadow: none;
 			background-color: #585858;
 			color: #ffffff !important;
+			text-decoration: none;
 		}
 
 			input[type="submit"].primary:hover,
