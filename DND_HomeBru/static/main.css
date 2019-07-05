@@ -84,8 +84,8 @@ article.media.content-section {
 	  
 	  .account-img {
 		display: block;
-    	width: 125px;
-    	height: 125px;
+    	width: 10vw;
+    	height: 10vw;
     	margin: auto auto;
     	transform: translateY(-40%);
     	border-radius: 50%;
@@ -100,7 +100,7 @@ article.media.content-section {
 	  }
 
 article.media.content-section.profile {
-		width: 20%;
+		width: auto;
 		float: left;
 	}
 	
@@ -109,8 +109,8 @@ article.media.content-section.profile {
 	}
 	
 	.media-body.profile {
-		text-align: -webkit-center;
-		font-size: small;
+		text-align: center;
+    	font-size: 1vw;
 	}
 	
 	.email-dis {
