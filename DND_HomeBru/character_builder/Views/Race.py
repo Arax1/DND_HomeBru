@@ -35,6 +35,7 @@ class RaceDetailView(DetailView):
 
 class RaceCreateView(LoginRequiredMixin, CreateView):
     model = Race
+    slug_field = 'race_slug'
     template_name = TEMPLATE_FOLDER + 'race_create_form.html'
     fields = ['name', 'description', 'age', 'alignment', 'size', 'speed']
 
@@ -42,11 +43,11 @@ class RaceCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super(RaceCreateView, self).get_context_data(**kwargs)
-        context['race_traits'] = RaceTrait.objects.filter(
-            race=self.get_object())
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(RaceCreateView, self).get_context_data(**kwargs)
+    #     context['race_traits'] = RaceTrait.objects.filter(
+    #         race=self.get_object())
+    #     return context
 
 
 class RaceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
