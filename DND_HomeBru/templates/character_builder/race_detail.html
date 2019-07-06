@@ -28,9 +28,11 @@
       <p class="article-content">Base Walking Speed is {{ race_details.speed }}ft</p>
       {% for trait in race_traits %}
       <div class="article-metadata-lite">
+        {% if race_details.author == user %}
         <small class="text-mute side"><a href="{% url 'race_trait_delete' trait.id %}" class="delete">Delete</a></small>
         <small class="text-mute side"><a href="{% url 'race_trait_edit' trait.id race_details.id %}"
             class="edit">Edit</a></small>
+        {% endif %}
         <h3 class="article-content">{{ trait }}</h3>
       </div>
       <p class="article-content">{{ trait.description }}</p>
