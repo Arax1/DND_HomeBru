@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1> Delete class</h1>
-  <form action="" method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ class.name }}"?</p>
-    <input type="submit" value="Delete" />
-  </form>
+<legend class="border-bottom mb-4">Delete "{{ class.name }}"?</legend>
+<form action="" method="post">{% csrf_token %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2 class="cardlabel"><a class="article-title" href="{{ class.get_absolute_url }}">{{ class.name }}</a>
+        </h2>
+        <small class="text-mute">Hit Dice: 1d{{ class.hit_dice }}</small>
+      </div>
+      <p class="article-content">{{ class.description }}</p>
+    </div>
+  </article>
+  <p>Are you sure you want to delete this class?</p>
+  <input type="submit" class="button-danger" value="Delete" />
+</form>
+
 {% endblock content %}

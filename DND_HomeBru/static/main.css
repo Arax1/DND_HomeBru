@@ -186,6 +186,15 @@ input, select, textarea {
 	appearance: none;
 }
 
+input.button-danger {
+    letter-spacing: 0.15em !important;
+}
+
+	input.button-danger:hover {
+    	color: #ca0404 !important;
+    	box-shadow: inset 0 0 0 2px #ca0404 !important;
+	}
+
 /* Basic */
 
 	@-ms-viewport {
@@ -2671,7 +2680,7 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			color: #f2849e !important;
+			color: #f2849e;
 			box-shadow: inset 0 0 0 2px #f2849e;
 		}
 
