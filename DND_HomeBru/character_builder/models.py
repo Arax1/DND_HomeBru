@@ -20,7 +20,7 @@ class Trait(models.Model):
 
 
 class RaceTrait(Trait):
-    race = models.ForeignKey('Race', on_delete=models.CASCADE)
+    race = models.ForeignKey('Race', on_delete=models.CASCADE, related_name='traits')
 
     def get_absolute_url(self):
         return reverse('race_trait_detail', args=[str(self.id)])

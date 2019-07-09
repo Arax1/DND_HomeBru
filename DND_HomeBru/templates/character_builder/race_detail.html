@@ -26,7 +26,7 @@
         <h3 class="article-content">Speed</h3>
       </div>
       <p class="article-content">Base Walking Speed is {{ race_details.speed }}ft</p>
-      {% for trait in race_traits %}
+      {% for trait in race_details.traits.all %}
       <div class="article-metadata-lite">
         {% if race_details.author == user %}
         <small class="text-mute side"><a href="{% url 'race_trait_delete' trait.id %}" class="delete">Delete</a></small>

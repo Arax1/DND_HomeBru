@@ -30,3 +30,24 @@ Next steps --  June 25, 2019
 1. Adding in Racial Traits, Class Features, Background Traits, and the rest
 2. Setting up the character builder and having the user manage the character's race, class and background
 3. HTML design for the character sheet and making it responsive
+--------------------------------------------------------------------
+July 9, 2019
+
+LORENZO:
+
+* Add Related Names to user_content_list views
+
+* Review Background Rules
+* Add Background Traits
+
+
+ANAND:
+
+* Cancel Buttons for Delete, Update and Delete views
+* For Class_list views, replace hit dice with author
+* Review Class Rules
+
+BIG-PICTURE-BOTH:
+
+*Revamp the Class Model
+
