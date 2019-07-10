@@ -8,6 +8,8 @@
             <h2 class="cardlabel"><a class="article-title"
                     href="{{ background.get_absolute_url }}">{{ background.name }}</a>
             </h2>
+            <small class="text-mute"><a href="{% url 'profile_content' background.author.username %}"
+                    class="edit">{{ background.author }}</a></small>
         </div>
         <p class="article-content">{{ background.description }}</p>
     </div>

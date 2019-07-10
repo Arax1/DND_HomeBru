@@ -7,7 +7,8 @@
         <div class="article-metadata">
             <h2 class="cardlabel"><a class="article-title" href="{{ class.get_absolute_url }}">{{ class.name }}</a>
             </h2>
-            <small class="text-mute">Hit Dice: 1d{{ class.hit_dice }}</small>
+            <small class="text-mute"><a href="{% url 'profile_content' class.author.username %}"
+                    class="edit">{{ class.author }}</a></small>
         </div>
         <p class="article-content">{{ class.description }}</p>
     </div>
