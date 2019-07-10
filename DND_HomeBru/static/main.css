@@ -195,6 +195,7 @@ input.button-danger {
     letter-spacing: 0.15em !important;
 }
 
+
 	input.button-danger:hover {
     	color: #ca0404 !important;
     	box-shadow: inset 0 0 0 2px #ca0404 !important;

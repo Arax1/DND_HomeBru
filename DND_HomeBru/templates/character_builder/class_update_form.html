@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Update this class</h1>
+<legend class="border-bottom mb-4">Edit "{{ class.name }}"</legend>
 <form action="" method="POST"> {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Update" />
+  <input type="submit" value="Save" />
+  <a href="{% url 'class_detail' class.id %}" class="button icon solid cancel">Cancel</a>
 </form>
 {% endblock content %}
