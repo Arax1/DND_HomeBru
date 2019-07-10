@@ -71,6 +71,11 @@ article.media.content-section {
 		letter-spacing: 0.10em;
 	}
 
+	a.cancel {
+		float: right;
+		text-decoration: none;
+	}
+
 	span.article-title {
 		font-size: 200%;
 		letter-spacing: 0.10em;
