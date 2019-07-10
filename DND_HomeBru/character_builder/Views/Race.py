@@ -87,6 +87,11 @@ class RaceTraitCreateView(LoginRequiredMixin, CreateView):
     template_name = TEMPLATE_FOLDER + 'race_trait_create_form.html'
     fields = ['name', 'description', ]
 
+    def get_context_data(self, **kwargs):
+        context = super(RaceTraitCreateView, self).get_context_data(**kwargs)
+        context['pkey'] = self.kwargs['pk']
+        return context
+
     def form_valid(self, form):
         form.instance.race = get_object_or_404(Race, pk=self.kwargs['pk'])
         return super().form_valid(form)
@@ -120,6 +125,11 @@ class RaceTraitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = TEMPLATE_FOLDER + 'race_trait_update_form.html'
     fields = ['name', 'description', ]
     success_url = reverse_lazy('race_view')
+
+    def get_context_data(self, **kwargs):
+        context = super(RaceTraitUpdateView, self).get_context_data(**kwargs)
+        context['pkey'] = self.kwargs['rpk']
+        return context
 
     def form_valid(self, form):
         form.instance.race = get_object_or_404(Race, pk=self.kwargs['rpk'])

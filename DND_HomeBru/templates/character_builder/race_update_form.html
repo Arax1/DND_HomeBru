@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Update this race</h1>
+<legend class="border-bottom mb-4">Editing "{{ race.name }}"</legend>
 <form action="" method="POST"> {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Update" />
-  <a href="{% url 'race_view' %}" class="button icon solid cancel">Cancel</a>
+  <input type="submit" value="Save" />
+  <a href="{% url 'race_detail' race.id %}" class="button icon solid cancel">Cancel</a>
 </form>
 {% endblock content %}
