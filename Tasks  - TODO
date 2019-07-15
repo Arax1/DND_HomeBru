@@ -50,4 +50,27 @@ ANAND:
 BIG-PICTURE-BOTH:
 
 *Revamp the Class Model
+-----------------------------------------------------------------
+July 15
+LORENZO:
 
+* #DONE Add Related Names to user_content_list views
+* #DONE Review Background Rules
+* #DONE Add Background Traits
+
+
+ANAND:
+
+* #DONE Cancel Buttons for Delete, Update and Delete views
+* #DONE For Class_list views, replace hit dice with author
+*#DONE Review Class Rules
+
+
+
+
+
+
+LORENZO:
+*  Add 'Date Posted' field to Race, Class, and Background models
+BIG-PICTURE-BOTH:
+*Revamp the Class Model
