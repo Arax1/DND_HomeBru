@@ -17,8 +17,9 @@ def homepage(request):
 
 
 class UserContentListView(ListView):
-    model = Race
+    model  = Race
     template_name = 'profile_content.html'
+    context_object_name = 'characters'
 
     def get_context_data(self, **kwargs):
         context = super(UserContentListView, self).get_context_data(**kwargs)
@@ -28,7 +29,7 @@ class UserContentListView(ListView):
         race_list = Race.objects.filter(author=user)
         class_list = Class.objects.filter(author=user)
         background_list = Background.objects.filter(author=user)
-
         context['all_objects'] = [*race_list, *class_list, *background_list]
+        # context['all_objects'] = [*self.model.race, *self.model.class, *self.model.background]
         context['user'] = user
         return context

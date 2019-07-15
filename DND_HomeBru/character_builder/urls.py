@@ -36,8 +36,16 @@ urlpatterns = [
          BackgroundUpdateView.as_view(), name="background_edit"),
     path('background/delete/<int:pk>',
          BackgroundDeleteView.as_view(), name="background_delete"),
+    # Paths for Background Trait Views
+    path('background/detail/new/<int:pk>',
+         BackgroundTraitCreateView.as_view(), name='background_trait_new'),
+    path('background/trait/edit/<int:pk>/<int:rpk>',
+         BackgroundTraitUpdateView.as_view(), name='background_trait_edit'),
+    path('background/trait/delete/<int:pk>',
+         BackgroundTraitDeleteView.as_view(), name='background_trait_delete'),
 
-    # Paths for Background Views
+
+    # Paths for Character Views
     path('characters', CharacterListView.as_view(), name="character_view"),
     path('character/new', CharacterCreateView.as_view(), name="character_new"),
     path('character/detail/<int:pk>',

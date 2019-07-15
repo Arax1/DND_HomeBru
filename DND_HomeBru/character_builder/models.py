@@ -25,6 +25,12 @@ class RaceTrait(Trait):
     def get_absolute_url(self):
         return reverse('race_trait_detail', args=[str(self.id)])
 
+
+class BackgroundTrait(Trait):
+    background = models.ForeignKey('Background', on_delete=models.CASCADE, related_name='traits')
+
+
+
 # class RaceTrait(Trait):
 #
 #
@@ -63,7 +69,7 @@ class Race(models.Model):
     alignment = models.CharField(max_length=100)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='races')
     # Make this part of RaceTrait
 
     # make a form for race, make this as simple as possible
@@ -83,7 +89,7 @@ class Class(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     hit_dice = models.IntegerField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='classes')
 
     def __str__(self):
         return self.name
@@ -91,6 +97,18 @@ class Class(models.Model):
     def get_absolute_url(self):
         return reverse('class_detail', args=[str(self.id)])
     # proficiencies, features, subclasses
+
+class Background(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='backgrounds')
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('background_detail', args=[str(self.id)])
+    # proficiencies, languages, equipment
 
 
 class Character(models.Model):
@@ -102,25 +120,13 @@ class Character(models.Model):
     charisma = models.IntegerField()
     constitution = models.IntegerField()
     dextirity = models.IntegerField()
-    race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE)
-    class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    race_key = models.ForeignKey(Race, default=1, on_delete=models.CASCADE,related_name='character')
+    class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE, related_name='character')
+    background  = models.ForeignKey(Background, default=1, on_delete=models.CASCADE, related_name='character')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='character')
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('character_detail', args=[str(self.id)])
-
-
-class Background(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('background_detail', args=[str(self.id)])
-    # proficiencies, languages, equipment

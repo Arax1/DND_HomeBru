@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<legend class="border-bottom mb-4">Delete "{{ background_trait.name }}"?</legend>
+<form action="" method="post">{% csrf_token %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata-lite">
+        <h3 class="article-content">{{ background_trait.name }}</h3>
+      </div>
+      <p class="article-content">{{ background_trait.description }}</p>
+    </div>
+  </article>
+  <p>Are you sure you want to delete this race?</p>
+  <input type="submit" class="button-danger" value="Delete" />
+  <a href="{% url 'background_detail' background_trait.race.id %}" class="button icon solid cancel">Cancel</a>
+</form>
+{% endblock content %}
