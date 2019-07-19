@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 class Trait(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-
+    date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
 
@@ -21,14 +21,12 @@ class Trait(models.Model):
 
 class RaceTrait(Trait):
     race = models.ForeignKey('Race', on_delete=models.CASCADE, related_name='traits')
-
     def get_absolute_url(self):
         return reverse('race_trait_detail', args=[str(self.id)])
 
 
 class BackgroundTrait(Trait):
     background = models.ForeignKey('Background', on_delete=models.CASCADE, related_name='traits')
-
 
 
 # class RaceTrait(Trait):
@@ -70,6 +68,7 @@ class Race(models.Model):
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
     speed = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='races')
+    date_posted = models.DateField(auto_now=True)
     # Make this part of RaceTrait
 
     # make a form for race, make this as simple as possible
@@ -90,7 +89,7 @@ class Class(models.Model):
     description = models.TextField()
     hit_dice = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='classes')
-
+    date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
 
@@ -102,7 +101,7 @@ class Background(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='backgrounds')
-
+    date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
 
@@ -124,7 +123,7 @@ class Character(models.Model):
     class_key = models.ForeignKey(Class, default=1, on_delete=models.CASCADE, related_name='character')
     background  = models.ForeignKey(Background, default=1, on_delete=models.CASCADE, related_name='character')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='character')
-
+    date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
 
