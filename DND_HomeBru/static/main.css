@@ -133,6 +133,21 @@ small.text-mute.side {
     margin-right: 10px;
 }
 
+p#description {
+    margin-top: 30px;
+    line-height: 30px;
+}
+
+
+small.date.text-mute {
+    float: right;
+}
+
+p.article-content {
+    color: #242527;
+    font-size: inherit;
+}
+
 body {
 	line-height: 1;
 }
