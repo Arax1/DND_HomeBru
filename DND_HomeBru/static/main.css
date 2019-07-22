@@ -145,7 +145,8 @@ small.date.text-mute {
 
 p.article-content {
     color: #242527;
-    font-size: inherit;
+	font-size: inherit;
+	font-family: Helvetica, sans-serif;
 }
 
 body {
