@@ -71,6 +71,19 @@ ANAND:
 
 
 LORENZO:
-*  Add 'Date Posted' field to Race, Class, and Background models
+#DONE Add 'Date Posted' field to Race, Class, and Background models
 BIG-PICTURE-BOTH:
+
 *Revamp the Class Model
+---------------------------------------------------------------------------------------------------------
+July 22, 2019
+
+Lorenzo:
+*Add text-editor widgets for users to be able to write  richer text on descriptions
+*Modify Class Model to fit the complexity of the class features
+*Make Appropiate models for BASIC/STATIC class features, proficiences and save throws
+
+Anand:
+* Re-visit fonts. Consider choosing fonts that are eye-popping/thicker than the ones we're using currently.
+*Start thinking about the UI aesthetics of class tables; what is something that'll be pleasant to users
+but also usable/interactive with backend(interactive for when we have dynamic class features).

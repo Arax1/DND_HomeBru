@@ -89,9 +89,15 @@ class Class(models.Model):
     description = models.TextField()
     hit_dice = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='classes')
+    # proficiencies
+    # saves
+    #Class traits
+
     date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
+
+#another class Class called SpellCaster that will inherit from class??
 
     def get_absolute_url(self):
         return reverse('class_detail', args=[str(self.id)])
