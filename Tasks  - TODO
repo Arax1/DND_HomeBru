@@ -87,3 +87,4 @@ Anand:
 * Re-visit fonts. Consider choosing fonts that are eye-popping/thicker than the ones we're using currently.
 *Start thinking about the UI aesthetics of class tables; what is something that'll be pleasant to users
 but also usable/interactive with backend(interactive for when we have dynamic class features).
+*Look at the "Class Table Layout.JPG" file under the "Task Files" directoy for reference on the design of the class table
