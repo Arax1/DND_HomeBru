@@ -12,10 +12,10 @@
   <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
-        <h2 class="cardlabel"><span class="article-title">{{ object.name }}</span></h2>
-        <small class="date text-mute">{{ object.date_posted }}</small>
+        <h2 class="cardlabel"><span class="article-title">{{ background_details.name }}</span></h2>
+        <small class="date text-mute">{{ background_details.date_posted }}</small>
       </div>
-      <p class="article-content" id="description">{{ object.description }}</p>
+      <p class="article-content" id="description">{{ background_details.description|safe }}</p>
 
       {% for trait in background_details.traits.all %}
       <div class="article-metadata-lite">
@@ -27,7 +27,7 @@
         {% endif %}
         <h3 class="article-content">{{ trait }}</h3>
       </div>
-      <p class="article-content">{{ trait.description }}</p>
+      <p class="article-content">{{ trait.description|safe }}</p>
       {% endfor %}
       {% if background_details.author == user %}
       <a href="{% url 'background_trait_new' background_details.id %}" class="button small icon solid" id="rtrait">Add

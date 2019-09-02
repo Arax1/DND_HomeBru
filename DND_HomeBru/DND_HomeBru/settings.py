@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'character_builder.apps.CharacterBuilderConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DND_HomeBru.urls'
+CKEDITOR_CONFIGS = {
+    'HOMEBRU_TEXT_EDITOR': {
+        'toolbar': None,
+    },
+}
 
 TEMPLATES = [
     {
@@ -119,9 +125,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# print('STATIC_ROOT>>>>>>>', STATIC_ROOT)
 STATIC_URL = '/static/'
+# SITE_MEDIA_ROOT = os.path.join(
+    # os.path.dirname(__file__), 'static' #this should be the correct path instead
+# )
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

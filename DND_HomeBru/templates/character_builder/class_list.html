@@ -10,7 +10,7 @@
             <small class="text-mute"><a href="{% url 'profile_content' class.author.username %}"
                     class="edit">{{ class.author }}</a></small>
         </div>
-        <p class="article-content">{{ class.description }}</p>
+        <p class="article-content">{{ class.description|safe }}</p>
     </div>
 </article>
 {% endfor  %}

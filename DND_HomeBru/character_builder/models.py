@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
+DEFAULT_CLASS_ID = 1
 
 """
 
@@ -10,13 +12,15 @@ from django.contrib.auth.models import User
 
 class Trait(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(config_name='HOMEBRU_EDITOR')
     date_posted = models.DateField(auto_now=True)
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('trait_detail', args=[str(self.id)])
+    class Meta:
+        abstract = True
 
 
 class RaceTrait(Trait):
@@ -43,11 +47,25 @@ class BackgroundTrait(Trait):
 #
 
 
+"""
+The classtrait model is equivelant to what is known as 'class features' in the DND
+conventional cannon.
+"""
+
 class Classtrait(Trait):
     unlock_level = models.PositiveIntegerField(default=1)
+    Class  = models.ForeignKey('Class', default  =DEFAULT_CLASS_ID ,on_delete=models.CASCADE, related_name='features')
 
-    # foreign key to race
-    # make a form for character
+
+class Saving_Throw(Trait):
+    description = None
+    Class  = models.ForeignKey('Class', default  =DEFAULT_CLASS_ID ,on_delete=models.CASCADE, related_name='saves')
+
+
+class Proficiency(Trait):
+    description = models.CharField(max_length=300)
+    Class  = models.ForeignKey('Class', default  =DEFAULT_CLASS_ID ,on_delete=models.CASCADE, related_name='proficiencies')
+# make a form for character
 
 
 class Race(models.Model):
@@ -62,7 +80,7 @@ class Race(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(config_name='HOMEBRU_TEXT_EDITOR')
     age = models.IntegerField()
     alignment = models.CharField(max_length=100)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES, default='M')
@@ -86,14 +104,11 @@ class Race(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(config_name='HOMEBRU_TEXT_EDITOR')
     hit_dice = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='classes')
-    # proficiencies
-    # saves
-    #Class traits
-
     date_posted = models.DateField(auto_now=True)
+
     def __str__(self):
         return self.name
 
@@ -105,7 +120,7 @@ class Class(models.Model):
 
 class Background(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(config_name='HOMEBRU_TEXT_EDITOR')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='backgrounds')
     date_posted = models.DateField(auto_now=True)
     def __str__(self):

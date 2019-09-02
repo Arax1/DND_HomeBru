@@ -4,6 +4,7 @@
 <legend class="border-bottom mb-4">Edit "{{ class.name }}"</legend>
 <form action="" method="POST"> {% csrf_token %}
   {{ form|crispy }}
+  {{ form.media }}
   <input type="submit" value="Save" />
   <a href="{% url 'class_detail' class.id %}" class="button icon solid cancel">Cancel</a>
 </form>

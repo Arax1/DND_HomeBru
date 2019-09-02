@@ -14,7 +14,7 @@
         <small class="text-mute">Alignment: {{ race_details.alignment }}</small>
         <small class="date text-mute">{{ race_details.date_posted }}</small>
       </div>
-      <p class="article-content" id="description">{{ race_details.description }}</p>
+      <p class="article-content" id="description">{{ race_details.description|safe }}</p>
       <div class="article-metadata-lite">
         <h3 class="article-content">Age</h3>
       </div>
@@ -36,7 +36,7 @@
         {% endif %}
         <h3 class="article-content">{{ trait }}</h3>
       </div>
-      <p class="article-content">{{ trait.description }}</p>
+      <p class="article-content">{{ trait.description|safe }}</p>
       {% endfor %}
       {% if race_details.author == user %}
       <a href="{% url 'race_trait_new' race_details.id %}" class="button small icon solid" id="rtrait">Add Trait</a>

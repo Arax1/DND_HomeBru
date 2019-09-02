@@ -10,7 +10,7 @@
       <div class="article-metadata">
         <h2 class="cardlabel"><span class="article-title">{{ race_trait_details.name }}</span></h2>
       </div>
-      <p class="article-content">{{ race_trait_details.description }}</p>
+      <p class="article-content">{{ race_trait_details.description|safe }}</p>
   </article>
 </div>
 {% endblock %}

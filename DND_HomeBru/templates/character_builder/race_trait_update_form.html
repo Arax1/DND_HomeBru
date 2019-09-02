@@ -4,6 +4,7 @@
 <h1>Update this trait</h1>
 <form action="" method="POST"> {% csrf_token %}
   {{ form|crispy }}
+  {{ form.media }}
   <input type="submit" value="Update" />
   <a href="{% url 'race_detail' pkey %}" class="button icon solid cancel">Cancel</a>
 </form>

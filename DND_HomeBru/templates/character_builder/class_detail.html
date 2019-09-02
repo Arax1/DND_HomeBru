@@ -14,7 +14,7 @@
         <small class="text-mute">Hit Dice: 1d{{ object.hit_dice }}</small>
         <small class="date text-mute">{{ object.date_posted }}</small>
       </div>
-      <p class="article-content" id="description">{{ object.description }}</p>
+      <p class="article-content" id="description">{{ object.description|safe }}</p>
   </article>
 </div>
 {% endblock content %}

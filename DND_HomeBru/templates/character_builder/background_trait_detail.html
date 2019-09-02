@@ -7,7 +7,7 @@
       <div class="article-metadata-lite">
         <h3 class="article-content">{{ background_trait.name }}</h3>
       </div>
-      <p class="article-content">{{ background_trait.description }}</p>
+      <p class="article-content">{{ background_trait.description|safe }}</p>
     </div>
   </article>
   <p>Are you sure you want to delete this race?</p>

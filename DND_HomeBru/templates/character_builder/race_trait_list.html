@@ -9,7 +9,7 @@
                     href="{{ race_trait.get_absolute_url }}">{{ race_trait.name }}</a>
             </h2>
         </div>
-        <p class="article-content">{{ race_trait.description }}</p>
+        <p class="article-content">{{ race_trait.description|safe }}</p>
     </div>
 </article>
 {% endfor  %}

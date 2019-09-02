@@ -11,7 +11,7 @@
             <small class="text-mute"><a href="{% url 'profile_content' background.author.username %}"
                     class="edit">{{ background.author }}</a></small>
         </div>
-        <p class="article-content">{{ background.description }}</p>
+        <p class="article-content">{{ background.description|safe }}</p>
     </div>
 </article>
 {% endfor  %}
