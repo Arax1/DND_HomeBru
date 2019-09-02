@@ -2,4 +2,4 @@ This file is meant to cite all of the third-party apps/APIS we use in HOMEBRU. T
 
 CKEditor(Web Text Editor Widget):https://ckeditor.com/docs/index.html
 Pillow:https://pillow.readthedocs.io/en/stable/
-crispy_forms:https://github.com/django-crispy-forms/django-crispy-forms
+crispy_forms:https://github.com/django-crispy-forms/django-crispy-forms 
