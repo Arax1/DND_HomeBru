@@ -58,6 +58,9 @@ CKEDITOR_CONFIGS = {
     'HOMEBRU_TEXT_EDITOR': {
         'toolbar': None,
     },
+    'HOMEBRU_EDITOR': {
+        'toolbar': None,
+    },
 }
 
 TEMPLATES = [
